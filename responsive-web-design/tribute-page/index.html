@@ -19,8 +19,14 @@
         font-size: 1.5rem;
         text-align: center;
         font-family: Roboto;
+        color: #222;
         background-color: rgb(236, 236, 236);
         line-height: 2.3rem;
+        background: linear-gradient(
+          180deg,
+          rgb(255, 255, 255),
+          rgba(255, 124, 124, 0.239)
+        );
       }
 
       h1 {
@@ -39,17 +45,6 @@
         font-size: 2rem;
       }
 
-      @keyframes zoom {
-        100% {
-          scale: 1.1;
-        }
-      }
-      @keyframes unzoom {
-        100% {
-          scale: 1;
-        }
-      }
-
       #image {
         height: auto;
         max-width: 100%;
@@ -65,7 +60,11 @@
       }
 
       #img-div {
-        background-color: white;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 83, 31, 0.127),
+          rgba(177, 153, 153, 0.137)
+        );
         border-radius: 7px;
         margin: auto;
         padding: 20px;
@@ -88,29 +87,33 @@
           src="https://www.eu-startups.com/wp-content/uploads/2019/10/ada-lovelace.png"
           alt="Ada Lovelace picture"
         />
-        <figcaption id="img-caption">Ada Lovelace portrait</figcaption>
+        <figcaption id="img-caption">
+          <h4>Watercolour portrait of Ada</h4>
+        </figcaption>
       </figure>
       <section id="tribute-info">
         <h2>Who is Ada Lovelace?</h2>
         <p>
-          Augusta Ada King, Countess of Lovelace was an English mathematician
-          and writer, chiefly known for her work on Charles Babbage's proposed
-          mechanical general-purpose computer, the Analytical Engine. She is
-          believed by some to be the first to recognise that the machine had
-          applications beyond pure calculation, and to have published the first
-          algorithm intended to be carried out by such a machine. As a result,
-          she is often regarded as the first to recognise the full potential of
-          computers and as one of the first computer programmers.
+          <strong>Augusta Ada King</strong>, Countess of Lovelace was an English
+          mathematician and writer, chiefly known for her work on Charles
+          Babbage's proposed mechanical general-purpose computer, the Analytical
+          Engine. She is believed by some to be the first to recognise that the
+          machine had applications beyond pure calculation, and to have
+          published the first algorithm intended to be carried out by such a
+          machine. As a result, she is often regarded as the first to recognise
+          the full potential of computers and as
+          <strong>one of the first computer programmers</strong>.
         </p>
         <p>
-          In 1840, Babbage was invited to give a seminar at the University of
-          Turin about his Analytical Engine. Luigi Menabrea, a young Italian
-          engineer and the future Prime Minister of Italy, transcribed Babbage's
-          lecture into French, and this transcript was subsequently published in
-          the Bibliothèque universelle de Genève in October 1842. Babbage's
-          friend Charles Wheatstone commissioned Ada Lovelace to translate
-          Menabrea's paper into English. She then augmented the paper with
-          notes, which were added to the translation. Ada Lovelace spent the
+          In 1840, <strong>Babbage</strong> was invited to give a seminar at the
+          University of Turin about his Analytical Engine.
+          <strong>Luigi Menabrea</strong>, a young Italian engineer and the
+          future Prime Minister of Italy, transcribed Babbage's lecture into
+          French, and this transcript was subsequently published in the
+          Bibliothèque universelle de Genève in October 1842. Babbage's friend
+          Charles Wheatstone commissioned Ada Lovelace to translate Menabrea's
+          paper into English. She then augmented the paper with notes, which
+          were added to the translation. <strong>Ada Lovelace</strong> spent the
           better part of a year doing this, assisted with input from Babbage.
           These notes, which are more extensive than Menabrea's paper, were then
           published in the September 1843 edition of Taylor's Scientific Memoirs
@@ -118,21 +121,22 @@
         </p>
         <h4>To sum up...</h4>
         <ul>
-          <li>Ada Lovelace is regerder as one of first programmers</li>
           <li>
-            Ada Lovelace is regarded as the first to recognise the full
-            potential of computer
+            <strong>Ada Lovelace</strong> is regerder as one of first
+            programmers.
+          </li>
+          <li>
+            <strong>Ada Lovelace</strong> is regarded as the first to recognise
+            the full potential of computer.
+          </li>
+          <li>
+            She described an algorithm for the Analytical Engine to compute
+            Bernoulli numbers. It is considered to be the
+            <strong> first published algorithm </strong> ever specifically
+            tailored for implementation on a computer.
           </li>
         </ul>
 
-        <p>
-          Ada Lovelace described an algorithm for the Analytical Engine to
-          compute Bernoulli numbers. It is considered to be the first published
-          algorithm ever specifically tailored for implementation on a computer,
-          and Ada Lovelace has often been cited as the first computer programmer
-          for this reason. The engine was never completed so her program was
-          never tested.
-        </p>
         <h3>
           Learn more about Ada Lovelace
           <a
