@@ -19,24 +19,58 @@
         font-size: 1.5rem;
         text-align: center;
         font-family: Roboto;
-        background-color: rgb(184, 184, 184);
+        background-color: rgb(236, 236, 236);
+        line-height: 2.3rem;
       }
+
       h1 {
         font-size: 3rem;
+        padding: 40px;
+        text-align: center;
       }
+
       h2 {
         font-size: 2.5rem;
+        padding: 30px;
+        text-align: center;
       }
+
       h3 {
         font-size: 2rem;
       }
+
+      @keyframes zoom {
+        100% {
+          scale: 1.1;
+        }
+      }
+      @keyframes unzoom {
+        100% {
+          scale: 1;
+        }
+      }
+
       #image {
         height: auto;
         max-width: 100%;
         display: block;
-        margin: auto;
+        margin: 10px auto 10px auto;
         border-radius: 7px;
       }
+
+      #image:hover {
+        animation-name: zoom;
+        animation-duration: 500ms;
+        animation-fill-mode: forwards;
+      }
+
+      #img-div {
+        background-color: white;
+        border-radius: 7px;
+        margin: auto;
+        padding: 20px;
+      }
+
       #tribute-info {
         width: 600px;
         text-align: justify;
@@ -56,6 +90,7 @@
         <figcaption id="img-caption">Ada Lovelace portrait</figcaption>
       </figure>
       <section id="tribute-info">
+        <h2>Who is Ada Lovelace?</h2>
         <p>
           Augusta Ada King, Countess of Lovelace (née Byron; 10 December 1815 –
           27 November 1852) was an English mathematician and writer, chiefly
