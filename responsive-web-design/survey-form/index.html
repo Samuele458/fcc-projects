@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <style>
+      :root {
+        --font-color: rgb(44, 44, 44);
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -11,59 +17,94 @@
       <p id="description">Simple survey form</p>
     </header>
     <main>
-      <form id="survey-form">
-        <label id="name-label" for="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Your name..."
-          required
-        />
-        <label id="email-label" for="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Your email..."
-          required
-        />
-        <label id="number-label" for="number">Number:</label>
-        <input
-          type="number"
-          id="number"
-          name="number"
-          placeholder="Your age..."
-          min="10"
-          max="99"
-          required
-        />
-
-        <p>Programming skills:</p>
-        <label>
+      <div class="form-box">
+        <form id="survey-form">
+          <label id="name-label" for="name">Name:</label>
           <input
-            type="radio"
-            name="skills-level"
-            value="beginner"
-          />Beginner</label
-        >
-        <label>
-          <input type="radio" name="skills-level" value="medium" />Medium</label
-        >
-        <label>
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your name..."
+            required
+          />
+          <label id="email-label" for="email">Email:</label>
           <input
-            type="radio"
-            name="skills-level"
-            value="advanced"
-          />Advanced</label
-        >
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your email..."
+            required
+          />
+          <label id="number-label" for="number">Number:</label>
+          <input
+            type="number"
+            id="number"
+            name="number"
+            placeholder="Your age..."
+            min="10"
+            max="99"
+            required
+          />
 
-        <select name="" id="dropdown"></select>
+          <p>Programming skills:</p>
+          <label>
+            <input
+              type="radio"
+              name="skills-level"
+              value="beginner"
+            />Beginner</label
+          >
+          <label>
+            <input
+              type="radio"
+              name="skills-level"
+              value="medium"
+            />Medium</label
+          >
+          <label>
+            <input
+              type="radio"
+              name="skills-level"
+              value="advanced"
+            />Advanced</label
+          >
 
-        <textarea placeholder="Enter your comment"></textarea>
+          <p>What kind of developer are you?</p>
+          <select name="devType" id="dropdown" required>
+            <option disabled selected value>Select an option</option>
+            <option value="fontend">Frontend developer</option>
+            <option value="backend">Fackend developer</option>
+            <option value="fullstack">Full-stack developer</option>
+          </select>
 
-        <button type="submit" id="submit">Submit</button>
-      </form>
+          <p>Which extra skill do you have?</p>
+          <label
+            ><input
+              type="checkbox"
+              value="linux"
+              name="extraSkills"
+            />Linux</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              value="linux"
+              name="extraSkills"
+            />Docker</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              value="linux"
+              name="extraSkills"
+            />Git</label
+          >
+
+          <textarea placeholder="Enter your comment"></textarea>
+
+          <button type="submit" id="submit">Submit</button>
+        </form>
+      </div>
     </main>
     <footer></footer>
   </body>
