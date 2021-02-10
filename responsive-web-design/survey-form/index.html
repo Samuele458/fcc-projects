@@ -6,35 +6,76 @@
     <title>Document</title>
 
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
       :root {
         --font-color: rgb(44, 44, 44);
+      }
+
+      body {
+        font-family: Roboto;
+        font-size: 20px;
+      }
+
+      input,
+      button,
+      textarea,
+      select {
+        margin: 0;
+        width: 100%;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      form {
+        max-width: 600px;
+        margin: auto;
+        border-radius: 4px;
+        background-color: rgb(177, 86, 86);
+      }
+
+      .form-entry {
+        display: block;
+        width: 100%;
+      }
+
+      .form-box {
+        padding: 1rem;
+        margin: 0.25rem, auto, 1rem, auto;
       }
     </style>
   </head>
   <body>
     <header>
-      <h1 id="title">Survey Form</h1>
-      <p id="description">Simple survey form</p>
+      <h1 id="title" class="text-center">Survey Form</h1>
+      <p id="description" class="text-center">Simple survey form</p>
     </header>
     <main>
-      <div class="form-box">
-        <form id="survey-form">
+      <form id="survey-form">
+        <div class="form-box">
           <label id="name-label" for="name">Name:</label>
           <input
             type="text"
             id="name"
             name="name"
             placeholder="Your name..."
+            class="form-entry"
             required
           />
+        </div>
+        <div class="form-box">
           <label id="email-label" for="email">Email:</label>
           <input
             type="email"
             id="email"
             name="email"
             placeholder="Your email..."
+            class="form-entry"
             required
           />
+        </div>
+        <div class="form-box">
           <label id="number-label" for="number">Number:</label>
           <input
             type="number"
@@ -43,68 +84,78 @@
             placeholder="Your age..."
             min="10"
             max="99"
+            class="form-entry"
             required
           />
+        </div>
 
-          <p>Programming skills:</p>
-          <label>
-            <input
-              type="radio"
-              name="skills-level"
-              value="beginner"
-            />Beginner</label
-          >
-          <label>
-            <input
-              type="radio"
-              name="skills-level"
-              value="medium"
-            />Medium</label
-          >
-          <label>
-            <input
-              type="radio"
-              name="skills-level"
-              value="advanced"
-            />Advanced</label
-          >
+        <p>Programming skills:</p>
+        <label>
+          <input
+            type="radio"
+            name="skills-level"
+            value="beginner"
+            class="form-entry"
+          />Beginner</label
+        >
+        <label>
+          <input
+            type="radio"
+            name="skills-level"
+            value="medium"
+            class="form-entry"
+          />Medium</label
+        >
+        <label>
+          <input
+            type="radio"
+            name="skills-level"
+            value="advanced"
+            class="form-entry"
+          />Advanced</label
+        >
 
-          <p>What kind of developer are you?</p>
-          <select name="devType" id="dropdown" required>
-            <option disabled selected value>Select an option</option>
-            <option value="fontend">Frontend developer</option>
-            <option value="backend">Fackend developer</option>
-            <option value="fullstack">Full-stack developer</option>
-          </select>
+        <p>What kind of developer are you?</p>
+        <select name="devType" id="dropdown" class="form-entry" required>
+          <option disabled selected value>Select an option</option>
+          <option value="fontend">Frontend developer</option>
+          <option value="backend">Fackend developer</option>
+          <option value="fullstack">Full-stack developer</option>
+        </select>
 
-          <p>Which extra skill do you have?</p>
-          <label
-            ><input
-              type="checkbox"
-              value="linux"
-              name="extraSkills"
-            />Linux</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              value="linux"
-              name="extraSkills"
-            />Docker</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              value="linux"
-              name="extraSkills"
-            />Git</label
-          >
+        <p>Which extra skill do you have?</p>
+        <label
+          ><input
+            type="checkbox"
+            value="linux"
+            name="extraSkills"
+            class="form-entry"
+          />Linux</label
+        >
+        <label
+          ><input
+            type="checkbox"
+            value="linux"
+            name="extraSkills"
+            class="form-entry"
+          />Docker</label
+        >
+        <label
+          ><input
+            type="checkbox"
+            value="linux"
+            name="extraSkills"
+            class="form-entry"
+          />Git</label
+        >
+        <label>Any comment or suggestion?</label>
+        <textarea
+          placeholder="Enter your comment"
+          class="form-entry"
+        ></textarea>
 
-          <textarea placeholder="Enter your comment"></textarea>
-
-          <button type="submit" id="submit">Submit</button>
-        </form>
-      </div>
+        <button type="submit" id="submit">Submit</button>
+      </form>
     </main>
     <footer></footer>
   </body>
