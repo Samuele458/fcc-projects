@@ -16,12 +16,16 @@
         font-size: 20px;
       }
 
+      label {
+        display: flex;
+        align-items: center;
+      }
+
       input,
       button,
       textarea,
       select {
-        margin: 0;
-        width: 100%;
+        margin: 0px;
       }
 
       .text-center {
@@ -35,9 +39,16 @@
         background-color: rgb(177, 86, 86);
       }
 
+      .form-radio {
+        margin: 1rem;
+      }
+
       .form-entry {
         display: block;
         width: 100%;
+        border: 1px;
+        border-radius: 0.3rem;
+        height: 2rem;
       }
 
       .form-box {
@@ -95,7 +106,7 @@
             type="radio"
             name="skills-level"
             value="beginner"
-            class="form-entry"
+            class="form-radio"
           />Beginner</label
         >
         <label>
@@ -103,7 +114,7 @@
             type="radio"
             name="skills-level"
             value="medium"
-            class="form-entry"
+            class="form-radio"
           />Medium</label
         >
         <label>
@@ -111,7 +122,7 @@
             type="radio"
             name="skills-level"
             value="advanced"
-            class="form-entry"
+            class="form-radio"
           />Advanced</label
         >
 
