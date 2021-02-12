@@ -14,6 +14,7 @@
       body {
         font-family: Roboto;
         font-size: 20px;
+        color: rgb(243, 243, 243);
         background: repeating-linear-gradient(
           45deg,
           rgb(52, 235, 174) 0px,
@@ -36,17 +37,30 @@
       form {
         max-width: 600px;
         margin: auto;
+        margin-bottom: 10rem;
         border-radius: 4px;
+        padding: 2rem;
         background: linear-gradient(
-          -45deg,
+          45deg,
           rgb(23, 168, 139),
-          rgb(30, 105, 90)
+          rgb(34, 131, 111)
         );
+        box-shadow: 4px 8px 2px 3px rgba(12, 56, 47, 0.466);
       }
 
       .form-radio,
       .form-check {
         margin: 0.35rem;
+        margin-left: 0.5rem;
+      }
+
+      textarea,
+      input,
+      select,
+      button {
+        font-family: inherit;
+        font-size: inherit;
+        box-shadow: 3px 3px 1px 1px rgba(12, 56, 47, 0.486);
       }
 
       .form-entry {
@@ -62,11 +76,30 @@
         margin: 0.25rem, auto, 0.25rem, auto;
       }
 
+      .form-box p {
+        margin: 0.2rem;
+      }
+
       .form-textarea {
         width: 100%;
         max-width: 100%;
         min-width: 100%;
         min-height: 3rem;
+      }
+
+      #submit {
+        display: block;
+        margin: auto;
+        width: 50%;
+        background-color: rgb(30, 105, 90);
+        color: white;
+
+        border: 0px;
+        padding: 10px;
+      }
+
+      #submit:hover {
+        background-color: rgb(52, 235, 174);
       }
     </style>
   </head>
@@ -185,8 +218,9 @@
             class="form-textarea"
           ></textarea>
         </div>
-
-        <button type="submit" id="submit">Submit</button>
+        <div class="form-box">
+          <button type="submit" id="submit">Submit</button>
+        </div>
       </form>
     </main>
     <footer></footer>
