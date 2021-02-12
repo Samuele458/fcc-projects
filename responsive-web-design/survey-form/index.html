@@ -14,18 +14,19 @@
       body {
         font-family: Roboto;
         font-size: 20px;
+        background: repeating-linear-gradient(
+          45deg,
+          rgb(52, 235, 174) 0px,
+          rgb(52, 235, 174) 450px,
+          rgb(24, 214, 176) 450px,
+          rgb(24, 214, 176) 900px
+        );
       }
 
       label {
         display: flex;
         align-items: center;
-      }
-
-      input,
-      button,
-      textarea,
-      select {
-        margin: 0px;
+        margin-bottom: 0.1rem;
       }
 
       .text-center {
@@ -36,11 +37,16 @@
         max-width: 600px;
         margin: auto;
         border-radius: 4px;
-        background-color: rgb(177, 86, 86);
+        background: linear-gradient(
+          -45deg,
+          rgb(23, 168, 139),
+          rgb(30, 105, 90)
+        );
       }
 
-      .form-radio {
-        margin: 1rem;
+      .form-radio,
+      .form-check {
+        margin: 0.35rem;
       }
 
       .form-entry {
@@ -53,7 +59,14 @@
 
       .form-box {
         padding: 1rem;
-        margin: 0.25rem, auto, 1rem, auto;
+        margin: 0.25rem, auto, 0.25rem, auto;
+      }
+
+      .form-textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        min-height: 3rem;
       }
     </style>
   </head>
@@ -100,70 +113,78 @@
           />
         </div>
 
-        <p>Programming skills:</p>
-        <label>
-          <input
-            type="radio"
-            name="skills-level"
-            value="beginner"
-            class="form-radio"
-          />Beginner</label
-        >
-        <label>
-          <input
-            type="radio"
-            name="skills-level"
-            value="medium"
-            class="form-radio"
-          />Medium</label
-        >
-        <label>
-          <input
-            type="radio"
-            name="skills-level"
-            value="advanced"
-            class="form-radio"
-          />Advanced</label
-        >
+        <div class="form-box">
+          <p>Programming skills:</p>
+          <label>
+            <input
+              type="radio"
+              name="skills-level"
+              value="beginner"
+              class="form-radio"
+            />Beginner</label
+          >
+          <label>
+            <input
+              type="radio"
+              name="skills-level"
+              value="medium"
+              class="form-radio"
+            />Medium</label
+          >
+          <label>
+            <input
+              type="radio"
+              name="skills-level"
+              value="advanced"
+              class="form-radio"
+            />Advanced</label
+          >
+        </div>
 
-        <p>What kind of developer are you?</p>
-        <select name="devType" id="dropdown" class="form-entry" required>
-          <option disabled selected value>Select an option</option>
-          <option value="fontend">Frontend developer</option>
-          <option value="backend">Fackend developer</option>
-          <option value="fullstack">Full-stack developer</option>
-        </select>
+        <div class="form-box">
+          <p>What kind of developer are you?</p>
+          <select name="devType" id="dropdown" class="form-entry" required>
+            <option disabled selected value>Select an option</option>
+            <option value="fontend">Frontend developer</option>
+            <option value="backend">Fackend developer</option>
+            <option value="fullstack">Full-stack developer</option>
+          </select>
+        </div>
+        <div class="form-box">
+          <p>Which extra skill do you have?</p>
+          <label
+            ><input
+              type="checkbox"
+              value="linux"
+              name="extraSkills"
+              class="form-check"
+            />Linux</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              value="linux"
+              name="extraSkills"
+              class="form-check"
+            />Docker</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              value="linux"
+              name="extraSkills"
+              class="form-check"
+            />Git</label
+          >
+        </div>
 
-        <p>Which extra skill do you have?</p>
-        <label
-          ><input
-            type="checkbox"
-            value="linux"
-            name="extraSkills"
-            class="form-entry"
-          />Linux</label
-        >
-        <label
-          ><input
-            type="checkbox"
-            value="linux"
-            name="extraSkills"
-            class="form-entry"
-          />Docker</label
-        >
-        <label
-          ><input
-            type="checkbox"
-            value="linux"
-            name="extraSkills"
-            class="form-entry"
-          />Git</label
-        >
-        <label>Any comment or suggestion?</label>
-        <textarea
-          placeholder="Enter your comment"
-          class="form-entry"
-        ></textarea>
+        <div class="form-box">
+          <label>Any comment or suggestion?</label>
+          <textarea
+            placeholder="Enter your comment"
+            class="form-textarea"
+          ></textarea>
+        </div>
 
         <button type="submit" id="submit">Submit</button>
       </form>
