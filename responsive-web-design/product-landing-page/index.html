@@ -6,37 +6,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      #navbar {
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Noto Sans JP";
+        font-size: 13px;
+      }
+
+      header {
         position: fixed;
         top: 0;
-        background-color: green;
-        width: 100%;
         left: 0;
+        width: 100%;
+        background-color: blue;
       }
 
-      #navbar ul {
-        color: red;
+      #navbar {
+        background-color: rgb(155, 155, 155);
       }
 
-      #navbar ul li {
-        color: blue;
+      #navbar > ul {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      #navbar > ul > li {
+        display: inline;
+        padding: 10px;
+      }
+
+      .nav-link {
+        text-decoration: none;
+      }
+
+      footer {
+        background-color: rgb(49, 49, 49);
+        width: 100%;
+        margin: 0;
+        bottom: 0;
+        left: 0;
+        padding: 0.1rem;
+      }
+
+      footer > ul {
+        display: flex;
+        justify-content: center;
+      }
+
+      footer > ul > li {
+        display: inline;
+        padding: 10px;
+      }
+
+      .footer-link {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+      }
+
+      footer p {
+        color: rgb(231, 231, 231);
+        font-size: 0.9rem;
+        text-align: center;
+        margin: 10px;
       }
     </style>
   </head>
   <body>
     <header id="header">
-      <img src="#" alt="#" id="header-img" />
+      <img src="#" alt="" id="header-img" />
       <nav id="navbar">
         <ul>
-          <li><a href="" class="nav-link">1st</a></li>
-          <li><a href="" class="nav-link">2nd</a></li>
-          <li><a href="" class="nav-link">3rd</a></li>
+          <li><a href="" class="nav-link">Home</a></li>
+          <li><a href="" class="nav-link">Contact</a></li>
+          <li><a href="" class="nav-link">Blog</a></li>
         </ul>
       </nav>
     </header>
     <main>
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     </main>
-    <footer></footer>
+    <footer>
+      <ul>
+        <li><a href="" class="footer-link">Cookie Policy</a></li>
+        <li><a href="" class="footer-link">Privacy Policy</a></li>
+        <li><a href="" class="footer-link">Terms and Conditions</a></li>
+      </ul>
+
+      <p>Copyright 2021</p>
+    </footer>
   </body>
 </html>
