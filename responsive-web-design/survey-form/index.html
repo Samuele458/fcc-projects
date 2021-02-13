@@ -34,8 +34,8 @@
         text-align: center;
       }
 
-      form {
-        max-width: 600px;
+      #survey-form {
+        max-width: 300px;
         margin: auto;
         margin-bottom: 10rem;
         border-radius: 4px;
@@ -46,6 +46,18 @@
           rgb(34, 131, 111)
         );
         box-shadow: 4px 8px 2px 3px rgba(12, 56, 47, 0.466);
+      }
+
+      @media (min-width: 576px) {
+        #survey-form {
+          max-width: 500px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        #survey-form {
+          max-width: 600px;
+        }
       }
 
       .form-radio,
