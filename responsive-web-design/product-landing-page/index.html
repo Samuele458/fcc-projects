@@ -18,6 +18,7 @@
         font-family: "Noto Sans JP";
         font-size: 13px;
         background-color: rgb(51, 51, 51);
+        color: white;
       }
 
       header {
@@ -28,12 +29,13 @@
         display: flex;
         justify-content: space-around;
         background-color: rgb(39, 39, 39);
+        z-index: 1;
       }
 
-      #navbar {
+      #nav-bar {
       }
 
-      #navbar > ul {
+      #nav-bar > ul {
         width: 35vw;
         display: flex;
         align-items: stretch;
@@ -41,13 +43,13 @@
         height: 100%;
       }
 
-      #navbar > ul > li {
+      #nav-bar > ul > li {
         display: inline;
         padding: 7px;
         text-align: center;
       }
 
-      #navbar > ul > li:hover {
+      #nav-bar > ul > li:hover {
         background-color: rgb(114, 114, 114);
       }
 
@@ -130,6 +132,7 @@
         bottom: 0;
         left: 0;
         padding: 0.1rem;
+        margin-top: 3rem;
       }
 
       footer > ul {
@@ -162,6 +165,7 @@
       }
 
       .yt-video-box {
+        z-index: 0;
         position: relative;
         overflow: hidden;
         width: 100%;
@@ -179,6 +183,55 @@
         margin: auto;
       }
 
+      .card-group {
+        display: flex;
+        justify-content: space-around;
+        padding: 0.5rem;
+      }
+
+      .card {
+        width: 100%;
+        margin-left: 80px;
+        margin-right: 80px;
+        background-color: rgb(41, 41, 41);
+        border-radius: 10px 10px 10px 10px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card-header {
+        background-color: rgb(39, 39, 39);
+        padding: 0.5rem;
+        border-radius: 10px 10px 0px 0px;
+        text-align: center;
+        font-size: 2rem;
+      }
+
+      .card-body {
+        padding: 2rem 0.5rem 2rem 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .card-footer {
+        background-color: rgb(39, 39, 39);
+        padding: 0.5rem;
+        border-radius: 0px 0px 10px 10px;
+      }
+
+      .button {
+        display: block;
+        background-color: rgb(255, 208, 0);
+        border-radius: 4px;
+        padding: 5px;
+        width: 3rem;
+        margin: auto;
+        text-decoration: none;
+        color: black;
+        text-align: center;
+      }
+
       @media (max-width: 576px) {
         header {
           flex-direction: column;
@@ -188,7 +241,7 @@
           align-content: center;
         }
 
-        #navbar > ul {
+        #nav-bar > ul {
           flex-direction: column;
         }
 
@@ -208,12 +261,25 @@
           margin-top: 0px;
         }
 
-        #navbar > ul > li {
+        #nav-bar > ul > li {
           padding: 2px;
         }
 
         main {
           margin-top: 10rem;
+        }
+
+        .card-group {
+          flex-direction: column;
+        }
+
+        .card {
+          width: 100%;
+          margin-top: 15px;
+          margin-bottom: 15px;
+          margin-left: 0px;
+          margin-right: 0px;
+          border-radius: 10px 10px 10px 10px;
         }
       }
     </style>
@@ -225,17 +291,17 @@
     ></script>
     <header id="header">
       <img src="img/logo.png" alt="" id="header-img" />
-      <nav id="navbar">
+      <nav id="nav-bar">
         <ul>
-          <li><a href="" class="nav-link">Home</a></li>
-          <li><a href="" class="nav-link">Contact</a></li>
-          <li><a href="" class="nav-link">Blog</a></li>
+          <li><a href="#form" class="nav-link">Form</a></li>
+          <li><a href="#video" class="nav-link">Video</a></li>
+          <li><a href="#products" class="nav-link">Products</a></li>
         </ul>
       </nav>
     </header>
     <main>
-      <div class="container" id="show-product">
-        <form id="form">
+      <div class="container" id="show-product" name="form">
+        <form action="https://www.freecodecamp.com/email-submit" id="form">
           <h1><i class="fas fa-tint"></i> Ultrasonic Humidifier</h1>
           <label for="email"
             >Enter your email, in order to get discounts and news:</label
@@ -256,16 +322,43 @@
           alt="Ultrasonic Humidifier"
         />
       </div>
-      <div class="yt-video-box">
+
+      <section class="yt-video-box" name="video">
         <iframe
+          id="video"
           class="yt-video"
           src="https://www.youtube.com/embed/xIlGlUX9xrs"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
+      </section>
+
+      <div class="card-group">
+        <div class="card">
+          <div class="card-header">Supersonic Humidifier</div>
+          <div class="card-body">
+            <p>Buy now your Supersonic Humidifier.</p>
+            <p>
+              Package content: Supersonic Humidifier (multiple colors
+              available), power supply, USB cable, fragrances starter kit
+            </p>
+          </div>
+          <div class="card-footer"><a href="#" class="button">More</a></div>
+        </div>
+        <div class="card">
+          <div class="card-header">Humidifier + Premium Kit</div>
+          <div class="card-body">
+            <p>Buy now your Supersonic Humidifier, now with Premium Kit!</p>
+            <p>
+              Package content: Supersonic Humidifier (multiple colors
+              available), power supply, USB cable, fragrances Premium Kit (30+
+              fragrances)
+            </p>
+          </div>
+          <div class="card-footer"><a href="#" class="button">More</a></div>
+        </div>
       </div>
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     </main>
     <footer>
       <ul>
