@@ -107,7 +107,7 @@
       }
 
       .code {
-        font-family: "Droid Sans Mono";
+        font-family: "Courier New";
         background-color: rgb(41, 41, 41);
         border-radius: 5px;
         padding: 1px 3px 1px 3px;
@@ -119,8 +119,7 @@
 
       .code-block {
         display: block;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
+
         padding: 0.5rem;
       }
     </style>
@@ -133,6 +132,9 @@
           <a class="nav-link" href="#C_Programming_Language"
             >C Programming Language</a
           >
+        </li>
+        <li>
+          <a class="nav-link" href="#Hello_World">Hello World</a>
         </li>
       </ul>
     </nav>
@@ -165,9 +167,57 @@
         <p>
           C has been standardized by the ANSI since 1989 (ANSI C) and by the
           International Organization for Standardization (ISO).
-          <code class="code code-inline">int main</code>
         </p>
-        <code class="code code-block">int main main 3errt </code>
+      </section>
+      <section class="main-section" id="Hello_World">
+        <header>Hello World</header>
+        <p>Here’s the simplest program we can create in C:</p>
+        <pre>
+        <code class="code code-block">
+#include &lt;stdio.h&gt;
+
+int main( int argc, char** argv) {
+  printf(“Hello World!”);
+  return 0;
+}
+        </code>
+        </pre>
+
+        <p>This small program just prints “Hello World!” in the screen</p>
+        <p>Now let’s analyze it, line by line:</p>
+
+        <p>
+          <code class="code">#include &lt;stdio.h&gt;</code> - This line is a
+          preprocessor directive. The preprocessor directives are “commands”
+          evaluated by preprocessor, before compiling the source. In this case,
+          it indicates that the file stdio.h must be included to the program.
+          “stdio.h” is part of C standard library, and regards I/O operations.
+        </p>
+
+        <p>
+          <code class="code">int main( int argc, char** argv) {</code> - This is
+          a function. Every C function require parameters in input, and have a
+          return value in output. In this case it is the main function, it is
+          where the program start. All the code inside the curly brackets will
+          be executed.
+        </p>
+
+        <p>
+          <code class="code">printf(Hello World!”);</code> - This is the command
+          that allows you to print text on the screen. Printf is a function of
+          standard library. It receives in input the string you want to print,
+          and it will print it on the screen. In this example it has just been
+          used to print a single string, but it can be used also with other data
+          types
+        </p>
+
+        <p>
+          <code class="code">return 0;</code> - The return is a statement that
+          must be present in every non-void function. It indicates that a
+          specific value must be returned by the function. In this case is zero,
+          because this value is commonly used to indicate that no errors have
+          occurred.
+        </p>
       </section>
     </main>
     <footer>
