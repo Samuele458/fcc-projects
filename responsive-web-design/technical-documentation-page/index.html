@@ -16,6 +16,7 @@
         font-family: "Titillium Web", Arial, Helvetica, sans-serif;
         background-color: rgb(27, 27, 27);
         color: white;
+        font-size: 15px;
       }
 
       #navbar {
@@ -23,6 +24,8 @@
         background-color: rgb(14, 14, 14);
         height: 100%;
         min-width: 10rem;
+        max-width: 12rem;
+        top: 0;
       }
 
       #navbar > ul {
@@ -40,6 +43,38 @@
         margin: 5px;
       }
 
+      footer {
+        width: 100%;
+        background-color: rgb(10, 10, 10);
+        padding: 15px;
+      }
+
+      .footer-content {
+        margin-left: 13rem;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer-content > ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .footer-content > ul > li {
+        display: inline;
+        margin: 10px;
+      }
+
+      .footer-content p {
+        text-align: center;
+      }
+
+      .footer-link {
+        text-decoration: none;
+        color: inherit;
+      }
+
       .nav-link {
         display: block;
         text-decoration: none;
@@ -49,6 +84,26 @@
       }
 
       #main-doc {
+        margin: 3rem 1rem 3rem 13rem;
+      }
+
+      .main-section {
+        display: block;
+        width: 100%;
+      }
+
+      p {
+        line-height: 1.4;
+        margin: 10px;
+      }
+
+      .main-section > header {
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #000;
       }
     </style>
   </head>
@@ -57,99 +112,53 @@
       <header><h1 id="title">C Language</h1></header>
       <ul>
         <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#">paragraph 1</a>
+          <a class="nav-link" href="#C_Programming_Language"
+            >C Programming Language</a
+          >
         </li>
       </ul>
     </nav>
     <main id="main-doc">
-      <section class="main-section" id="placeholder-id">
-        <header></header>
+      <section class="main-section" id="C_Programming_Language">
+        <header>C Programming Language</header>
+        <p>
+          C is a general-purpose, procedural computer programming language
+          supporting structured programming, lexical variable scope, and
+          recursion, with a static type system.
+        </p>
+        <p>
+          By design, C provides constructs that map efficiently to typical
+          machine instructions. It has found lasting use in applications
+          previously coded in assembly language. Such applications include
+          operating systems and various application software for computer
+          architectures that range from supercomputers to PLCs and embedded
+          systems.
+        </p>
+        <p>
+          A successor to the programming language B, C was originally developed
+          at Bell Labs by Dennis Ritchie between 1972 and 1973 to construct
+          utilities running on Unix. It was applied to re-implementing the
+          kernel of the Unix operating system. During the 1980s, C gradually
+          gained popularity. It has become one of the most widely used
+          programming languages, with C compilers from various vendors available
+          for the majority of existing computer architectures and operating
+          systems.
+        </p>
+        <p>
+          C has been standardized by the ANSI since 1989 (ANSI C) and by the
+          International Organization for Standardization (ISO).
+        </p>
       </section>
     </main>
-    <footer></footer>
+    <footer>
+      <div class="footer-content">
+        <ul>
+          <li><a href="#" class="footer-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer-link">Cookie Policy</a></li>
+          <li><a href="#" class="footer-link">Terms and Conditions</a></li>
+        </ul>
+        <p>Copyright 2021</p>
+      </div>
+    </footer>
   </body>
 </html>
