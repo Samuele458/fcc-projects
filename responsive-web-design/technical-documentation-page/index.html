@@ -12,6 +12,10 @@
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         font-family: "Titillium Web", Arial, Helvetica, sans-serif;
         background-color: rgb(27, 27, 27);
@@ -39,8 +43,14 @@
         padding: 5px;
       }
 
+      #navbar > ul > li:hover {
+        background-color: rgb(41, 41, 41);
+      }
+
       #title {
         margin: 5px;
+        padding: 5px;
+        text-align: center;
       }
 
       footer {
@@ -81,6 +91,7 @@
         width: 100%;
         margin-left: 0.3rem;
         color: inherit;
+        padding: 5px 1px 5px 1px;
       }
 
       #main-doc {
@@ -95,6 +106,15 @@
       p {
         line-height: 1.4;
         margin: 10px;
+      }
+
+      .main-section ul {
+        margin: 2rem;
+      }
+
+      .main-section li {
+        margin-left: 4rem;
+        line-height: 1.4;
       }
 
       .main-section > header {
@@ -119,7 +139,7 @@
 
       .code-block {
         display: block;
-
+        margin: 10px;
         padding: 0.5rem;
       }
     </style>
@@ -217,6 +237,98 @@ int main( int argc, char** argv) {
           specific value must be returned by the function. In this case is zero,
           because this value is commonly used to indicate that no errors have
           occurred.
+        </p>
+      </section>
+      <section class="main-section" id="Comments">
+        <header>Comments</header>
+
+        <p>
+          Comments are a way in which you can add text that will not be
+          executed. Commens are used to add informations in your code such as
+          license informations, author, date, and mainly to make the code more
+          understandable.
+        </p>
+
+        <p>In C Language there are two types of comments</p>
+
+        <ul>
+          <li>
+            <p>
+              Single line comments:
+              <code class="code">// this is a comment</code>
+            </p>
+            <pre><code class="code code-block">
+#include &lt;stdio.h&gt;
+
+//Author: Samuele
+
+int main( int argc, char** argv) {
+  printf("This line will be printed");
+  //printf("This line will not be printed.");
+  return 0;
+}
+            </code></pre>
+          </li>
+          <li>
+            <p>
+              Multi-line comments:
+              <code class="code">/* this is a comment */</code>
+            </p>
+            <pre><code class="code code-block">
+#include &lt;stdio.h&gt;
+
+/*
+  Author: Samuele
+  Date:   15 / 02 / 2021
+*/
+
+int main( int argc, char** argv) {
+  printf("This line will be printed");
+  /* printf("This line will not be printed."); */
+  return 0;
+}
+            </code></pre>
+          </li>
+        </ul>
+      </section>
+      <section class="main-section" id="Comments">
+        <header>Variables</header>
+        <p>
+          A variable is a storage area, usable in your program, referenced by a
+          mnemonic name. A variable name must start with a letter (in can't
+          start with numbers, but it can contain numbers in any other position)
+        </p>
+        <pre>
+          <code class="code code-block">
+#include &lt;stdio.h&gt;
+
+int main( int argc, char** argv) {
+  int a = 5;
+  int b = 2;
+  int c = a + b;
+
+  printf("The sum is %d", c );
+
+  return 0;
+}            
+          </code>
+        </pre>
+        <p>
+          In this program, 5 is assigned to variable
+          <code class="code">a</code>, 2 is assigned to variable
+          <code class="code">b</code>, and the sum of these two variables, so
+          <code class="code">5 + 2</code>, is assigned to
+          <code class="code">c</code>.
+        </p>
+        <p>
+          In the line <code class="code">printf("The sum is %d", c );</code>, in
+          order to print variable <code class="code">c</code>, "%d" placeholder
+          was used. It indicates that an int value (in this case
+          <code class="code">c</code>) will be passed as 2nd parameter.
+        </p>
+        <p>
+          The output of this code will be:
+          <code class="code">The sum is 7</code>
         </p>
       </section>
     </main>
