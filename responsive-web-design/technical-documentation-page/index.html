@@ -20,27 +20,26 @@
         font-family: "Titillium Web", Arial, Helvetica, sans-serif;
         background-color: rgb(27, 27, 27);
         color: white;
-        font-size: 15px;
+        font-size: 20px;
       }
 
       #navbar {
         position: fixed;
         background-color: rgb(14, 14, 14);
         height: 100%;
-        min-width: 10rem;
-        max-width: 12rem;
+        width: 19rem;
         top: 0;
       }
 
       #navbar > ul {
-        height: 88%;
+        height: 80%;
         overflow-y: auto;
         overflow-x: hidden;
       }
 
       #navbar > ul > li {
         border: 1px solid #000;
-        padding: 5px;
+        padding: 10px 5px 10px 5px;
       }
 
       #navbar > ul > li:hover {
@@ -51,6 +50,8 @@
         margin: 5px;
         padding: 5px;
         text-align: center;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
       }
 
       footer {
@@ -60,7 +61,7 @@
       }
 
       .footer-content {
-        margin-left: 13rem;
+        margin-left: 19rem;
         display: flex;
         flex-direction: column;
       }
@@ -95,7 +96,7 @@
       }
 
       #main-doc {
-        margin: 3rem 1rem 3rem 13rem;
+        margin: 3rem 1rem 3rem 21rem;
       }
 
       .main-section {
@@ -120,7 +121,7 @@
       .main-section > header {
         margin-top: 1.5rem;
         margin-bottom: 1rem;
-        font-size: 1.3rem;
+        font-size: 1.8rem;
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         border-bottom: 1px solid #000;
@@ -131,6 +132,7 @@
         background-color: rgb(41, 41, 41);
         border-radius: 5px;
         padding: 1px 3px 1px 3px;
+        white-space: pre-wrap;
       }
 
       .code-inline {
@@ -141,6 +143,51 @@
         display: block;
         margin: 10px;
         padding: 0.5rem;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        body {
+          font-size: 15px;
+        }
+        .footer-content {
+          margin-left: 13rem;
+        }
+        #navbar {
+          width: 13rem;
+        }
+      }
+
+      @media only screen and (max-width: 768px) {
+        body {
+          font-size: 15px;
+        }
+
+        #main-doc {
+          margin-left: 1rem;
+        }
+
+        .footer-content {
+          margin-left: 0px;
+        }
+
+        .footer-content > ul {
+          flex-direction: column;
+        }
+
+        #navbar {
+          width: 13rem;
+          display: block;
+          position: relative;
+          width: 100%;
+        }
+
+        #title {
+          margin-top: 0px;
+        }
+
+        #navbar > ul > li {
+          text-align: center;
+        }
       }
     </style>
   </head>
@@ -154,7 +201,31 @@
           >
         </li>
         <li>
+          <a class="nav-link" href="#Uses_of_C">Uses of C</a>
+        </li>
+        <li>
           <a class="nav-link" href="#Hello_World">Hello World</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Comments">Comments</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Variables">Variables</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Arrays">Arrays</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#If_statement">If statement</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#For_statement">For statement</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Functions">Functions</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Recursion">Recursion</a>
         </li>
       </ul>
     </nav>
@@ -187,6 +258,41 @@
         <p>
           C has been standardized by the ANSI since 1989 (ANSI C) and by the
           International Organization for Standardization (ISO).
+        </p>
+      </section>
+      <section class="main-section" id="Uses_of_C">
+        <header>Uses of C</header>
+        <p>
+          C is widely used for systems programming in implementing operating
+          systems and embedded system applications, because C code, when written
+          for portability, can be used for most purposes, yet when needed,
+          system-specific code can be used to access specific hardware addresses
+          and to perform type punning to match externally imposed interface
+          requirements, with a low run-time demand on system resources.
+        </p>
+        <p>
+          C can be used for website programming using the Common Gateway
+          Interface (CGI) as a "gateway" for information between the Web
+          application, the server, and the browser.
+        </p>
+        <p>
+          C is often chosen over interpreted languages because of its speed,
+          stability, and near-universal availability. A consequence of C's wide
+          availability and efficiency is that compilers, libraries and
+          interpreters of other programming languages are often implemented in
+          C.
+        </p>
+        <p>
+          For example, the reference implementations of Python, Perl, and PHP
+          are written in C.
+        </p>
+        <p>
+          C enables programmers to create efficient implementations of
+          algorithms and data structures, because the layer of abstraction from
+          hardware is thin, and its overhead is low, an important criterion for
+          computationally intensive programs. For example, the GNU Multiple
+          Precision Arithmetic Library, the GNU Scientific Library, Mathematica,
+          and MATLAB are completely or partially written in C.
         </p>
       </section>
       <section class="main-section" id="Hello_World">
@@ -291,7 +397,7 @@ int main( int argc, char** argv) {
           </li>
         </ul>
       </section>
-      <section class="main-section" id="Comments">
+      <section class="main-section" id="Variables">
         <header>Variables</header>
         <p>
           A variable is a storage area, usable in your program, referenced by a
@@ -330,6 +436,187 @@ int main( int argc, char** argv) {
           The output of this code will be:
           <code class="code">The sum is 7</code>
         </p>
+      </section>
+      <section class="main-section" id="Arrays">
+        <header>Arrays</header>
+        <p>
+          Often you need to store a lot of data of the same type, like the name
+          of 30 students, or a list of 400 numbers. Giving a name to each
+          variable is not practical. So, in this case you can use arrays. An
+          array is a list of variables of the same type, with the same name.
+          each cell of the array will be referenced by using an offset.
+        </p>
+        <pre><code class="code code-block">
+#include &lt;stdio.h&gt;
+
+//Author: Samuele
+
+int main( int argc, char** argv) {
+  int a[3] = { 45, 2, 9 };
+  printf("%d\n" a[0] );
+  printf("%d\n" a[1] );
+  printf("%d\n" a[2] );
+  return 0;
+}
+        </code></pre>
+        <p>
+          In the code above, an array of three elements is created, and printed
+          on the screen
+        </p>
+      </section>
+      <section class="main-section" id="If_statement">
+        <header>If statement</header>
+        <p>
+          Using <code class="code">if</code> statement you can run code under
+          certain conditions
+        </p>
+        <p>The syntax is the following:</p>
+        <pre>
+          <code class="code code-block">
+if( condition ) {
+  /* code executed if condition is true */
+} else if( another_condition ) {
+  /* code executed if condition is false, but another_condition is true  */
+} else {
+  /* code execute if both conditions are false */
+}
+          </code>
+        </pre>
+        <p>Here is a practical example:</p>
+        <pre>
+          <code class="code code-block">
+#include &lt;stdio.h&gt;
+
+int sum( int a, int b ) {
+  return a + b;
+}
+
+int main( int argc, char** argv) {
+  int a = 5;
+  int b = 7;
+
+  if( a > b ) {
+    printf("a is greater than b.");
+  } else if( b > a ) {
+    printf("b is greater than a.");
+  } else {
+    printf("a is equal to b.");
+  }
+
+  return 0;
+}  
+          </code>
+        </pre>
+        <p>
+          This will print out
+          <code class="code">b is greater than a.</code> because the condition
+          <code class="code">b > a</code> is true.
+        </p>
+      </section>
+      <section class="main-section" id="For_statement">
+        <header>For statement</header>
+        <p>
+          The <code class="code">for</code> statement is a loop, so it allows
+          you to execute multiple times a portion of code.
+        </p>
+        <p>Syntax of <code class="code">for</code> statement:</p>
+        <pre><code class="code code-block">
+for(  init-expression ; cond-expression ; loop-expression ) {
+  /* code */
+}
+        </code></pre>
+        <ul>
+          <li>
+            <p>
+              <code class="code">init-expression</code>: code executed just at
+              the beginning of the for statement
+            </p>
+          </li>
+          <li>
+            <p>
+              <code class="code">cond-expression</code>: condition evaluated at
+              every cycle. If condition is true the cycle will be repeated, else
+              the execution flow will exit from the for statement.
+            </p>
+          </li>
+          <li>
+            <p>
+              <code class="code">loop-expression</code>: code executed after
+              every cycle
+            </p>
+          </li>
+        </ul>
+      </section>
+      <section class="main-section" id="Functions">
+        <header>Functions</header>
+        <p>
+          Functions are blocks of code that can be executed at occurrence.
+          Functions accept parameters in input, and return a value (if not, they
+          are void functions, so they just execute a portion of code, without
+          returning anything)
+        </p>
+        <p>
+          The following function receive in input two int variables, and returns
+          their sum:
+        </p>
+        <pre><code class="code code-block">
+int sum( int a, int b ) {
+  return a + b;
+}
+        </code></pre>
+        <p>
+          Instead, the following function receive in input two int variables,
+          and print their sum, without returning anything (so it is a void
+          function):
+        </p>
+        <pre><code class="code code-block">
+void printSum( int a, int b ) {
+  printf("%d", (a + b) );
+}
+        </code></pre>
+        <p>Now, a full example:</p>
+        <pre><code class="code code-block">
+#include &lt;stdio.h&gt;
+
+int sum( int a, int b ) {
+  return a + b;
+}
+
+int main( int argc, char** argv) {
+  int a = 5;
+  int b = 2;
+
+  printf("The sum is %d", sum(a,b) );
+
+  return 0;
+}   
+        </code></pre>
+      </section>
+      <section class="main-section" id="Recursion">
+        <header>Recursion</header>
+        <p>C allows recorsion, it means that a function can call itself.</p>
+        <p>
+          Recursion is often an advanced topic, but there are many simple
+          examples that allow you to understand the basic concepts
+        </p>
+        <p>Recursive algorithm for the calculation of the factorial:</p>
+        <pre><code class="code code-block">
+int factorial( int n ) {
+  if( n == 0 ) return 1;
+  return n * factorial(n-1);
+}
+        </code></pre>
+        <p>
+          Recursive algorithm for the calculation of the nth number of
+          Fibonacci:
+        </p>
+        <pre><code class="code code-block">
+int fib( int n ) {
+  if( n == 0 ) return 0;
+  if( n == 1 ) return 1;
+  return fib(n-1) * fib(n-2);
+}
+        </code></pre>
       </section>
     </main>
     <footer>
