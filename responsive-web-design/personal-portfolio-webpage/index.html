@@ -21,6 +21,8 @@
         background-color: black;
         position: fixed;
         width: 100%;
+        top: 0px;
+        z-index: 2;
       }
 
       #navbar {
@@ -34,7 +36,9 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+
         width: 50%;
+        padding: 10px;
       }
 
       #navbar > ul > li {
@@ -42,8 +46,14 @@
         text-decoration: none;
       }
 
+      .nav-container {
+      }
+
       .navlink {
+        display: block;
         text-decoration: none;
+        color: inherit;
+        margin: auto;
       }
 
       footer {
@@ -74,6 +84,68 @@
         color: inherit;
         text-decoration: none;
       }
+
+      #welcome-section {
+        background-color: rgb(22, 22, 22);
+        height: 100vh;
+        width: 100%;
+        top: 0px;
+        position: absolute;
+        z-index: 1;
+      }
+
+      #projects {
+        width: 100%;
+      }
+
+      #contacts {
+        width: 100%;
+      }
+
+      #title {
+        display: block;
+        font-size: 3rem;
+      }
+
+      #subtitle {
+        display: block;
+        font-size: 2rem;
+      }
+
+      .container {
+        margin: 4.5rem;
+        width: auto;
+        height: auto;
+      }
+
+      .hflex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+
+      .vflex {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+
+      .vcenter-box {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+
+      #main-img {
+        max-height: 70vh;
+      }
+
+      .zoom {
+        transition: transform 0.2s;
+      }
+
+      .zoom:hover {
+        transform: scale(1.04);
+      }
     </style>
   </head>
   <body>
@@ -83,9 +155,12 @@
     ></script>
     <header>
       <nav id="navbar">
-        <div class="nav-container">
-          <i class="fab fa-github"></i>
-        </div>
+        <ul>
+          <li>
+            <a href="#" class="navlink"><i class="fab fa-github zoom"></i></a>
+          </li>
+        </ul>
+
         <ul>
           <li><a href="#" class="navlink">About</a></li>
           <li><a href="#" class="navlink">About</a></li>
@@ -94,7 +169,19 @@
       </nav>
     </header>
     <main>
-      <div style="height: 100vh; width: 100%; background-color: red">sdsds</div>
+      <section id="welcome-section">
+        <div class="container">
+          <div class="hflex">
+            <img id="main-img" src="img/dev.png" alt="" class="zoom" />
+            <div class="container vcenter-box">
+              <h1 id="title">Hi, I am Samuele</h1>
+              <h2 id="subtitle">I'm a software developer</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects"></section>
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
