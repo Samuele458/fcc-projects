@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Samuele</title>
     <style>
+      :root {
+        --sections-border-radius: 10rem;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -70,7 +74,7 @@
         flex-direction: column;
         background-color: rgb(22, 22, 22);
         bottom: 0px;
-        z-index: 1;
+        z-index: 3;
       }
 
       footer > ul {
@@ -107,7 +111,7 @@
         top: 0px;
         position: absolute;
         z-index: 1;
-        border-radius: 0px 0px 20rem 0px;
+        border-radius: 0px 0px var(--sections-border-radius) 0px;
         border: 0px;
       }
 
@@ -118,7 +122,7 @@
         height: 100vh;
         z-index: 2;
         position: relative;
-        border-top-left-radius: 20rem;
+        border-top-left-radius: var(--sections-border-radius);
       }
 
       #contacts {
@@ -139,6 +143,8 @@
         margin: 4.5rem;
         width: auto;
         height: auto;
+        position: relative;
+        display: block;
       }
 
       .mini-container {
@@ -181,6 +187,14 @@
         transform: scale(1.04);
       }
 
+      .zoom2 {
+        transition: transform 0.2s;
+      }
+
+      .zoom2:hover {
+        transform: scale(2);
+      }
+
       #navlogos {
         max-width: 10rem;
       }
@@ -201,6 +215,19 @@
         background-color: rgb(22, 22, 22);
         top: 100vh;
         z-index: 1;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 45%);
+        column-gap: 4rem;
+        row-gap: 2rem;
+        padding: 2rem;
+      }
+      .card {
+        background-color: red;
+        width: 100%;
+        height: 29rem;
       }
     </style>
   </head>
@@ -243,18 +270,33 @@
             </div>
           </div>
           <div class="mini-container hflex hcenter-box" id="skills">
-            <i class="fab fa-css3-alt"></i>
-            <i class="fab fa-html5"></i>
-            <i class="fab fa-js"></i>
-            <i class="fab fa-php"></i>
-            <i class="fab fa-git-alt"></i>
-            <i class="fab fa-linux"></i>
-            <i class="fab fa-react"></i>
+            <i class="fab fa-css3-alt zoom2"></i>
+            <i class="fab fa-html5 zoom2"></i>
+            <i class="fab fa-js zoom2"></i>
+            <i class="fab fa-php zoom2"></i>
+            <i class="fab fa-git-alt zoom2"></i>
+            <i class="fab fa-linux zoom2"></i>
+            <i class="fab fa-react zoom2"></i>
           </div>
         </div>
       </section>
       <div id="round"></div>
-      <section id="projects"></section>
+      <section id="projects">
+        <div class="container">
+          <div class="grid">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+          </div>
+        </div>
+      </section>
     </main>
     <footer>
       <ul>
