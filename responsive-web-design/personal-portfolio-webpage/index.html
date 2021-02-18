@@ -344,6 +344,90 @@
         font-size: 2rem;
         margin: auto;
       }
+
+      @media (max-width: 1024px) {
+        body {
+          font-size: 20px;
+        }
+
+        #title {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 800px) {
+        .grid {
+          grid-template-columns: repeat(1, 90%);
+          column-gap: 0px;
+          margin: auto;
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 680px) {
+        :root {
+          --sections-border-radius: 6rem;
+        }
+        #navbar {
+          flex-direction: column;
+        }
+
+        footer > ul {
+          flex-direction: column;
+        }
+
+        #navbar > ul {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        #navlogos {
+          flex-direction: row !important;
+          margin: auto;
+        }
+
+        .navlink {
+          padding: 2px;
+          width: 100%;
+          text-align: center;
+        }
+
+        .container {
+          padding: 1rem;
+        }
+
+        #welcome-flex {
+          flex-direction: column;
+        }
+
+        #main-img {
+          width: 50%;
+          height: auto;
+          max-height: unset;
+          margin: auto;
+          margin-top: 10rem;
+        }
+
+        .mini-container {
+          margin: 0.5rem;
+        }
+
+        #title {
+          text-align: center;
+          font-size: 1.7rem;
+          margin-top: 1rem;
+        }
+
+        #subtitle {
+          text-align: center;
+          font-size: 1rem;
+        }
+
+        .grid {
+          padding: 0.5rem;
+        }
+      }
     </style>
   </head>
   <body>
@@ -358,7 +442,9 @@
       <nav id="navbar">
         <ul id="navlogos">
           <li>
-            <a href="#" class="navlink"><i class="fab fa-github zoom"></i></a>
+            <a href="https://github.com/Samuele458" class="navlink"
+              ><i class="fab fa-github zoom"></i
+            ></a>
           </li>
           <li>
             <a href="#" class="navlink"><i class="fab fa-facebook"></i></a>
@@ -380,7 +466,7 @@
     <main>
       <section id="welcome-section">
         <div class="container">
-          <div class="hflex">
+          <div class="hflex" id="welcome-flex">
             <img id="main-img" src="img/dev.png" alt="" class="zoom" />
             <div class="mini-container vcenter-box">
               <h1 id="title">
@@ -389,16 +475,16 @@
               <h2 id="subtitle">
                 I'm a <span class="hover-sec-color">software developer</span>.
               </h2>
+              <div class="mini-container hflex hcenter-box" id="skills">
+                <i class="fab fa-css3-alt zoom2 hover-sec-color"></i>
+                <i class="fab fa-html5 zoom2 hover-sec-color"></i>
+                <i class="fab fa-js zoom2 hover-sec-color"></i>
+                <i class="fab fa-php zoom2 hover-sec-color"></i>
+                <i class="fab fa-git-alt zoom2 hover-sec-color"></i>
+                <i class="fab fa-linux zoom2 hover-sec-color"></i>
+                <i class="fab fa-react zoom2 hover-sec-color"></i>
+              </div>
             </div>
-          </div>
-          <div class="mini-container hflex hcenter-box" id="skills">
-            <i class="fab fa-css3-alt zoom2 hover-sec-color"></i>
-            <i class="fab fa-html5 zoom2 hover-sec-color"></i>
-            <i class="fab fa-js zoom2 hover-sec-color"></i>
-            <i class="fab fa-php zoom2 hover-sec-color"></i>
-            <i class="fab fa-git-alt zoom2 hover-sec-color"></i>
-            <i class="fab fa-linux zoom2 hover-sec-color"></i>
-            <i class="fab fa-react zoom2 hover-sec-color"></i>
           </div>
         </div>
       </section>
@@ -407,23 +493,31 @@
         <div class="container">
           <h2 class="general-title">My Projects</h2>
           <div class="grid">
-            <div class="card zoom">
+            <div class="card zoom project-tile">
               <div class="card-header">
                 <img class="project-image" src="img/code-monitor.png" alt="" />
               </div>
               <div class="card-footer">
-                <a class="project-link" href="#">Code Monitor</a>
+                <a
+                  class="project-link"
+                  href="https://github.com/Samuele458/CodeMonitor"
+                  >Code Monitor</a
+                >
               </div>
             </div>
-            <div class="card zoom">
+            <div class="card zoom project-tile">
               <div class="card-header">
                 <img class="project-image" src="img/mazegenerator.gif" alt="" />
               </div>
               <div class="card-footer">
-                <a class="project-link" href="#">Maze Generator</a>
+                <a
+                  class="project-link"
+                  href="https://github.com/Samuele458/MazeGenerator"
+                  >Maze Generator</a
+                >
               </div>
             </div>
-            <div class="card zoom">
+            <div class="card zoom project-tile">
               <div class="card-header">
                 <img
                   class="project-image"
@@ -432,15 +526,23 @@
                 />
               </div>
               <div class="card-footer">
-                <a class="project-link" href="#">CovidTracker IT</a>
+                <a
+                  class="project-link"
+                  href="https://github.com/Pixovers/covidtracker_ita"
+                  >CovidTracker IT</a
+                >
               </div>
             </div>
-            <div class="card zoom">
+            <div class="card zoom project-tile">
               <div class="card-header">
                 <img class="project-image" src="img/ctf-writeups.png" alt="" />
               </div>
               <div class="card-footer">
-                <a class="project-link" href="#">CTF Writeups</a>
+                <a
+                  class="project-link"
+                  href="https://github.com/Samuele458/CTF-writeups"
+                  >CTF Writeups</a
+                >
               </div>
             </div>
           </div>
@@ -450,7 +552,11 @@
         <div class="container">
           <h2 class="general-title">Contact me</h2>
           <div class="mini-container hflex hcenter-box" id="contacts-logos">
-            <a href="#" class="contact-link"
+            <a
+              href="https://github.com/Samuele458"
+              id="profile-link"
+              target="_blank"
+              class="contact-link"
               ><i class="fab fa-github zoom2 hover-sec-color"></i
             ></a>
             <a href="#" class="contact-link"
@@ -462,7 +568,7 @@
             <a href="#" class="contact-link"
               ><i class="fab fa-facebook zoom2 hover-sec-color"></i
             ></a>
-            <a href="#" class="contact-link"
+            <a href="mailto:samuele.girgenti458@gmail.com" class="contact-link"
               ><i class="fas fa-at zoom2 hover-sec-color"></i
             ></a>
             <a href="#" class="contact-link"
