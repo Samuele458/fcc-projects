@@ -6,9 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Samuele</title>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
       :root {
         --sections-border-radius: 10rem;
         --cards-border-radius: 10px;
+        --secondary-color: yellow;
+        --main-border: solid 3px var(--secondary-color);
+        --text-color: white;
       }
 
       * {
@@ -17,10 +22,15 @@
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         font-size: 30px;
-        color: white;
+        color: var(--text-color);
         background-color: rgb(56, 56, 56);
+        font-family: "Open Sans";
         /*
         background: repeating-linear-gradient(
           45deg,
@@ -37,6 +47,7 @@
         width: 100%;
         top: 0px;
         z-index: 3;
+        border-bottom: var(--main-border);
       }
 
       #navbar {
@@ -52,15 +63,12 @@
         justify-content: space-around;
 
         width: 50%;
-        padding: 10px;
       }
 
       #navbar li {
         display: inline-block;
         text-decoration: none;
-      }
-
-      .nav-container {
+        height: 100%;
       }
 
       .navlink {
@@ -68,6 +76,12 @@
         text-decoration: none;
         color: inherit;
         margin: auto;
+        padding: 10px;
+      }
+
+      .navlink:hover {
+        background-color: var(--secondary-color);
+        color: black;
       }
 
       footer {
@@ -120,7 +134,7 @@
         width: 100%;
         background-color: rgb(56, 56, 56);
         margin-top: 100vh;
-        height: 100vh;
+        height: auto;
         z-index: 2;
         position: relative;
         border-top-left-radius: var(--sections-border-radius);
@@ -141,7 +155,7 @@
       }
 
       .container {
-        margin: 4.5rem;
+        padding: 4.5rem;
         width: auto;
         height: auto;
         position: relative;
@@ -224,9 +238,10 @@
         column-gap: 4rem;
         row-gap: 2rem;
         padding: 2rem;
+        padding-top: 5.5rem;
       }
       .card {
-        background-color: red;
+        background-color: rgb(22, 22, 22);
         width: 100%;
         height: 29rem;
         display: flex;
@@ -235,6 +250,12 @@
         border-bottom-right-radius: var(--cards-border-radius);
         border-top-left-radius: var(--cards-border-radius);
         border-top-right-radius: var(--cards-border-radius);
+        border-bottom: var(--main-border);
+      }
+
+      .card:hover {
+        border: var(--main-border);
+        border-width: 2px;
       }
 
       .card > .card-header {
@@ -248,9 +269,11 @@
       .card > .card-footer {
         width: 100%;
         height: 15%;
-        background-color: blue;
+        background-color: rgb(22, 22, 22);
         border-bottom-left-radius: var(--cards-border-radius);
         border-bottom-right-radius: var(--cards-border-radius);
+        text-align: center;
+        margin: auto;
       }
 
       .project-image {
@@ -260,6 +283,67 @@
         height: 100%;
         border-radius: inherit;
       }
+
+      .project-link {
+        display: inline-block;
+        padding: 1rem;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .general-title {
+        text-align: center;
+        padding-top: 2.5rem;
+        font-size: 3rem;
+      }
+
+      #contacts {
+        width: 100%;
+        /*margin-top: auto;*/
+        height: auto;
+        z-index: 2;
+        position: relative;
+        background: repeating-linear-gradient(
+          45deg,
+          rgb(24, 24, 24) 0px,
+          rgb(24, 24, 24) 200px,
+          rgb(26, 26, 26) 200px,
+          rgb(26, 26, 26) 400px
+        );
+        border-bottom: var(--main-border);
+      }
+
+      #contacts-logos {
+        max-width: 70%;
+      }
+
+      .contact-link {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .hover-sec-color:hover {
+        color: var(--secondary-color);
+      }
+
+      #up {
+        position: fixed;
+        right: 0px;
+        bottom: 0px;
+        width: 3rem;
+        height: 3rem;
+        background-color: var(--secondary-color);
+        z-index: 10;
+        margin: 20px;
+        border-radius: 0.3rem;
+      }
+
+      #up a {
+        display: block;
+        text-align: center;
+        font-size: 2rem;
+        margin: auto;
+      }
     </style>
   </head>
   <body>
@@ -267,6 +351,9 @@
       src="https://kit.fontawesome.com/d1503d6a63.js"
       crossorigin="anonymous"
     ></script>
+    <div id="up">
+      <a href="#welcome-section"><i class="fas fa-chevron-up"></i></a>
+    </div>
     <header>
       <nav id="navbar">
         <ul id="navlogos">
@@ -284,9 +371,9 @@
         </ul>
 
         <ul>
-          <li><a href="#" class="navlink">About</a></li>
-          <li><a href="#" class="navlink">About</a></li>
-          <li><a href="#" class="navlink">About</a></li>
+          <li><a href="#welcome-section" class="navlink">About</a></li>
+          <li><a href="#projects" class="navlink">My projects</a></li>
+          <li><a href="#contacts" class="navlink">Contact me</a></li>
         </ul>
       </nav>
     </header>
@@ -296,40 +383,91 @@
           <div class="hflex">
             <img id="main-img" src="img/dev.png" alt="" class="zoom" />
             <div class="mini-container vcenter-box">
-              <h1 id="title">Hi, I am Samuele.</h1>
-              <h2 id="subtitle">I'm a software developer.</h2>
+              <h1 id="title">
+                Hi, I am <span class="hover-sec-color">Samuele</span>.
+              </h1>
+              <h2 id="subtitle">
+                I'm a <span class="hover-sec-color">software developer</span>.
+              </h2>
             </div>
           </div>
           <div class="mini-container hflex hcenter-box" id="skills">
-            <i class="fab fa-css3-alt zoom2"></i>
-            <i class="fab fa-html5 zoom2"></i>
-            <i class="fab fa-js zoom2"></i>
-            <i class="fab fa-php zoom2"></i>
-            <i class="fab fa-git-alt zoom2"></i>
-            <i class="fab fa-linux zoom2"></i>
-            <i class="fab fa-react zoom2"></i>
+            <i class="fab fa-css3-alt zoom2 hover-sec-color"></i>
+            <i class="fab fa-html5 zoom2 hover-sec-color"></i>
+            <i class="fab fa-js zoom2 hover-sec-color"></i>
+            <i class="fab fa-php zoom2 hover-sec-color"></i>
+            <i class="fab fa-git-alt zoom2 hover-sec-color"></i>
+            <i class="fab fa-linux zoom2 hover-sec-color"></i>
+            <i class="fab fa-react zoom2 hover-sec-color"></i>
           </div>
         </div>
       </section>
       <div id="round"></div>
       <section id="projects">
         <div class="container">
+          <h2 class="general-title">My Projects</h2>
           <div class="grid">
-            <div class="card">
+            <div class="card zoom">
               <div class="card-header">
                 <img class="project-image" src="img/code-monitor.png" alt="" />
               </div>
-              <div class="card-footer">s</div>
+              <div class="card-footer">
+                <a class="project-link" href="#">Code Monitor</a>
+              </div>
             </div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
+            <div class="card zoom">
+              <div class="card-header">
+                <img class="project-image" src="img/mazegenerator.gif" alt="" />
+              </div>
+              <div class="card-footer">
+                <a class="project-link" href="#">Maze Generator</a>
+              </div>
+            </div>
+            <div class="card zoom">
+              <div class="card-header">
+                <img
+                  class="project-image"
+                  src="img/it-covidtracker2020.png"
+                  alt=""
+                />
+              </div>
+              <div class="card-footer">
+                <a class="project-link" href="#">CovidTracker IT</a>
+              </div>
+            </div>
+            <div class="card zoom">
+              <div class="card-header">
+                <img class="project-image" src="img/ctf-writeups.png" alt="" />
+              </div>
+              <div class="card-footer">
+                <a class="project-link" href="#">CTF Writeups</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contacts">
+        <div class="container">
+          <h2 class="general-title">Contact me</h2>
+          <div class="mini-container hflex hcenter-box" id="contacts-logos">
+            <a href="#" class="contact-link"
+              ><i class="fab fa-github zoom2 hover-sec-color"></i
+            ></a>
+            <a href="#" class="contact-link"
+              ><i class="fab fa-stack-overflow zoom2 hover-sec-color"></i
+            ></a>
+            <a href="#" class="contact-link"
+              ><i class="fab fa-twitter zoom2 hover-sec-color"></i
+            ></a>
+            <a href="#" class="contact-link"
+              ><i class="fab fa-facebook zoom2 hover-sec-color"></i
+            ></a>
+            <a href="#" class="contact-link"
+              ><i class="fas fa-at zoom2 hover-sec-color"></i
+            ></a>
+            <a href="#" class="contact-link"
+              ><i class="fas fa-phone zoom2 hover-sec-color"></i
+            ></a>
           </div>
         </div>
       </section>
