@@ -1,3 +1,8 @@
+/*
+ *    Author:       Samuele Girgenti
+ *    Date:         16 / 03 / 2021
+ */
+
 // read a random quote
 function getRandomQuote(handleQuote) {
   let quote = $.ajax({
@@ -21,14 +26,23 @@ function showRandomQuote() {
   getRandomQuote((quote) => {
     $("#text").text(quote.content);
     $("#author").text(quote.author);
+
+    //setting tweet URL
+    $("#tweet-quote").attr(
+      "href",
+      "https://twitter.com/intent/tweet?text=" +
+        encodeURIComponent(`${quote.content} - ${quote.author}`)
+    );
   });
 }
 
+//set main theme color to page
 function setPageColor(color) {
   $("body").css("background-color", color);
   $("#quote-box").css("color", color);
 }
 
+//return a random color (from color array)
 function getRandomColor() {
   const colors = [
     "#4287f5",
