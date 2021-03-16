@@ -1,7 +1,65 @@
-.b {
-  color: red;
+@import url("https://fonts.googleapis.com/css2?family=Recursive:wght@500&display=swap");
 
-  .a {
-    color: black;
+$font: "Recursive", serif;
+$btn-side: 50px;
+
+@mixin cardBorder($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -ms-border-radius: $radius;
+}
+
+@mixin box-shadow($x, $y, $blur, $c) {
+  -webkit-box-shadow: $x $y $blur $c;
+  -moz-box-shadow: $x $y $blur $c;
+  -ms-box-shadow: $x $y $blur $c;
+  box-shadow: $x $y $blur $c;
+}
+
+body {
+  font-family: $font;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: white;
+}
+
+#quote-box {
+  @include cardBorder(10px);
+  @include box-shadow(4px, 4px, 2px, rgb(56, 56, 56));
+  background-color: white;
+  margin: auto;
+  margin-top: 20vh;
+  width: 500px;
+  padding: 4rem;
+  color: white;
+
+  #text {
+    font-size: 2rem;
+    margin: 0px;
+  }
+
+  #author {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .btn {
+    @include box-shadow(0px, 0px, 2px, rgb(56, 56, 56));
+    height: $btn-side;
+    font-size: 1.7rem;
+    color: white;
+  }
+
+  .social-btn {
+    width: $btn-side;
+  }
+
+  #quote-left {
+    text-align: left;
+  }
+
+  #quote-right {
+    text-align: right;
   }
 }
