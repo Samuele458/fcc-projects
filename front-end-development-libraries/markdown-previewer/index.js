@@ -1,3 +1,8 @@
+/*
+ *    Author:       Samuele Girgenti
+ *    Date:         17 / 03 / 2021
+ */
+
 class Editor extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +23,10 @@ class Editor extends React.Component {
 }
 
 const renderer = new marked.Renderer();
+
+marked.setOptions({
+  breaks: true,
+});
 
 class Previewer extends React.Component {
   constructor(props) {
@@ -40,78 +49,36 @@ class Previewer extends React.Component {
   }
 }
 
-const preview_md = `
-# Random Encryption Fixed
+const preview_md = `# Visual Dijkstra
+## Simple visual graph editor, with built-in step-by-step Dijkstra's algorithm
 
-Challenge description:
 
-> We found the following file on a hacked terminal: 
-> \`\`\` 
-> import random
-> flag = "flag{not_the_flag}" seeds = [] for i in range(0,len(flag)):
->     seeds.append(random.randint(0,10000))
-> 
-> res = [] for i in range(0, len(flag)):
->     random.seed(seeds[i])
->     rands = []
->     for j in range(0,4):
->         rands.append(random.randint(0,255))
-> 
->     res.append(ord(flag[i]) ^ rands[i%4])
->     del rands[i%4]
->     print(str(rands))
-> 
-> print(res) print(seeds)
-> 
-> \`\`\`
-> 
-> We also found sample output from a previous run:
-> 
-> \`\`\` 
-> [249, 182, 79] [136, 198, 95] [159, 167, 6] [223, 136, 101] [66,
-> 27, 77] [213, 234, 239] [25, 36, 53] [89, 113, 149] [65, 127, 119]
-> [50, 63, 147] [204, 189, 228] [228, 229, 4] [64, 12, 191] [65, 176,
-> 96] [185, 52, 207] [37, 24, 110] [62, 213, 244] [141, 59, 81] [166,
-> 50, 189] [228, 5, 16] [59, 42, 251] [180, 239, 144] [13, 209, 132]
-> [184, 161, 235, 97, 140, 111, 84, 182, 162, 135, 76, 10, 69, 246, 195,
-> 152, 133, 88, 229, 104, 111, 22, 39] [9925, 8861, 5738, 1649, 2696,
-> 6926, 1839, 7825, 6434, 9699, 227, 7379, 9024, 817, 4022, 7129, 1096,
-> 4149, 6147, 2966, 1027, 4350, 4272] 
-> \`\`\`
+> **Visual Dijkstra** is a free and open-source tool, designed for creating and manipulating graphs. It allows you to find the shortest path between two nodes, by applying **Dijkstra's Shortest Path First algorithm**. 
 
-## Solution
-Here's my solution:
+![Visual Dijkstra Screenshot](https://raw.githubusercontent.com/Samuele458/visual-dijkstra/main/img/screen-001.png)
+![Visual Dijkstra Screenshot](https://raw.githubusercontent.com/Samuele458/visual-dijkstra/main/img/screen-002.png)
+
+## Features
+
+- Graph editor
+- Dijkstra algorithm
+- Step-by-step resolution
+
+
+## Run on linux
+On linux, download the appimage, then:
 \`\`\`
-import random
-
-flag = ""
-res = [184, 161, 235, 97, 140, 111, 84, 182, 162, 135, 76, 10, 69, 246, 195, 152, 133, 88, 229, 104, 111, 22, 39]
-seeds = [9925, 8861, 5738, 1649, 2696, 6926, 1839, 7825, 6434, 9699, 227, 7379, 9024, 817, 4022, 7129, 1096, 4149, 6147, 2966, 1027, 4350, 4272]
-
-for i in  range(0, len(seeds)):
-	random.seed(seeds[i])
-	rands = []
-	for j in  range(0,4):
-		rands.append(random.randint(0,255))
-	flag += chr(rands[i%4] ^ res[i])
-print( flag )
+ $ chmod +x Visual-Dijkstra-v1.0-x64.Linux.AppImage
+ $ ./Visual-Dijkstra-v1.0-x64.Linux.AppImage
 \`\`\`
 
-Since the seeds have been stored in \`seeds\`, we can reuse them in order to generate the same "random" numbers.
-Also, XOR is reversible, so if:
-\`\`\`
-res[i] = flag[i] ^ rands[i%4]
-\`\`\`
-it means that:
-\`\`\`
-flag[i] = rands[i%4] ^ res[i]
-\`\`\`
+### Technologies used
+ - \`C++\`
+ - \`Qt Widgets 5.15.2\`
 
-So, let's execute the script:
-\`\`\`
-$  python3 solve.py
-flag{Oppsie_LULZ_fixed}
-\`\`\`
+## Download
+
+Click [here](https://github.com/Samuele458/visual-dijkstra/releases) to get the latest release.
 
 `;
 
