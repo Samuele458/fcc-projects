@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#drum-machine {
+  background-color: red;
+}
+
+#drum-machine #tabs-box {
+  background-color: green;
+}
+
+#drum-machine #tabs-box .drum-pad {
+  background-color: blue;
+}
+/*# sourceMappingURL=style.css.map */
