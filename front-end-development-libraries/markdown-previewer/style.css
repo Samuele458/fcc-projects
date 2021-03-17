@@ -1,0 +1,22 @@
+#app-box {
+  background-color: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+#preview {
+  background-color: green;
+}
+
+#editor-box {
+  background-color: blue;
+}
+/*# sourceMappingURL=style.css.map */
