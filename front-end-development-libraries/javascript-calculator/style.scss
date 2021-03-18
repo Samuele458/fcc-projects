@@ -1,0 +1,40 @@
+$btn-side: 50px;
+$btn-ids: zero, one, two, three, four, five, six, seven, eight, nine, decimal,
+  minus, plus, divide, multiply, clear, equal;
+
+@each $btn in $btn-ids {
+  ##{$btn} {
+    grid-area: #{$btn};
+    background-color: red;
+  }
+}
+
+#calculator {
+  #buttons-box {
+    display: grid;
+    column-gap: $btn-side / 7;
+    row-gap: $btn-side / 7;
+    width: $btn-side * 6;
+    height: $btn-side * 8;
+    grid-template-areas:
+      "clear clear divide multiply"
+      "seven eight nine minus"
+      "four five six plus"
+      "one two three equal"
+      "zero zero decimal equal";
+
+    text-align: center;
+
+    .button {
+      width: auto;
+      height: auto;
+      background-color: gray;
+      font-size: $btn-side / 3;
+      padding-top: ($btn-side / 2);
+    }
+
+    #equal {
+      padding-top: $btn-side * 1.5;
+    }
+  }
+}
