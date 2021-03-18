@@ -1,6 +1,20 @@
+/*
+ *    Author:       Samuele Girgenti
+ *    Date:         18 / 03 / 2021
+ */
 
-$tab-side: 80px;
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+$tab-side: 100px;
 $tab-gap: $tab-side / 3;
+$tab-font-size: $tab-side / 3;
+
+$bgcolor: rgb(34, 34, 34);
+$box-bgcolor: rgb(65, 65, 65);
+$border-color: white;
+
+$tab-color: rgb(163, 163, 163);
+$tab-color-hover: rgb(129, 129, 129);
 
 * {
   margin: 0;
@@ -8,27 +22,35 @@ $tab-gap: $tab-side / 3;
   box-sizing: border-box;
 }
 
+body {
+  background-color: $bgcolor;
+  font-family: Roboto, sans-serif;
+}
 
 #drum-machine {
-  background-color: red;
+  background-color: $box-bgcolor;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   margin-top: 20vh;
   padding: 30px;
-  margin-left: 7rem;
-  margin-right: 7rem;
-
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 10px;
+  border: 2px solid $border-color;
+  width: $tab-side * 5;
+  color: rgb(243, 243, 243);
 
   #display {
     background-color: orange;
     display: block;
-    width: 120px;
+    width: 60%;
     border-radius: 10px;
-    padding: 5px;
-    margin: 10px;
+    padding: 15px;
+    margin: 30px;
+    border: 2px solid $border-color;
+    font-size: $tab-side / 4;
 
     p {
       text-align: center;
@@ -36,19 +58,27 @@ $tab-gap: $tab-side / 3;
   }
 
   #tabs-box {
-    
     display: grid;
-    grid-template-columns: repeat(3,$tab-side);
+    grid-template-columns: repeat(3, $tab-side);
     column-gap: $tab-gap;
     row-gap: $tab-gap;
-    width: $tab-gap*2+$tab-side*3;
-    height: $tab-gap*2+$tab-side*3;
+    width: $tab-gap * 2 + $tab-side * 3;
+    height: $tab-gap * 2 + $tab-side * 3;
+    text-align: center;
+    font-size: $tab-font-size;
 
     .drum-pad {
       display: block;
       height: $tab-side;
-      background-color: blue;
+      background-color: $tab-color;
       border-radius: 10px;
+      padding-top: ($tab-side / 2) - ($tab-font-size / 2);
+      border: 2px solid $border-color;
+    }
+
+    .drum-pad:hover {
+      background-color: $tab-color-hover;
+      border: 4px solid $border-color;
     }
   }
 }

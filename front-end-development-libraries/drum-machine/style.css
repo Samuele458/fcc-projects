@@ -1,3 +1,8 @@
+/*
+ *    Author:       Samuele Girgenti
+ *    Date:         18 / 03 / 2021
+ */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -5,8 +10,13 @@
           box-sizing: border-box;
 }
 
+body {
+  background-color: #222222;
+  font-family: Roboto, sans-serif;
+}
+
 #drum-machine {
-  background-color: red;
+  background-color: #414141;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,18 +31,23 @@
           align-items: center;
   margin-top: 20vh;
   padding: 30px;
-  margin-left: 7rem;
-  margin-right: 7rem;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 10px;
+  border: 2px solid white;
+  width: 500px;
+  color: #f3f3f3;
 }
 
 #drum-machine #display {
   background-color: orange;
   display: block;
-  width: 120px;
+  width: 60%;
   border-radius: 10px;
-  padding: 5px;
-  margin: 10px;
+  padding: 15px;
+  margin: 30px;
+  border: 2px solid white;
+  font-size: 25px;
 }
 
 #drum-machine #display p {
@@ -42,19 +57,28 @@
 #drum-machine #tabs-box {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (80px)[3];
-      grid-template-columns: repeat(3, 80px);
-  -webkit-column-gap: 26.66667px;
-          column-gap: 26.66667px;
-  row-gap: 26.66667px;
-  width: 293.33333px;
-  height: 293.33333px;
+  -ms-grid-columns: (100px)[3];
+      grid-template-columns: repeat(3, 100px);
+  -webkit-column-gap: 33.33333px;
+          column-gap: 33.33333px;
+  row-gap: 33.33333px;
+  width: 366.66667px;
+  height: 366.66667px;
+  text-align: center;
+  font-size: 33.33333px;
 }
 
 #drum-machine #tabs-box .drum-pad {
   display: block;
-  height: 80px;
-  background-color: blue;
+  height: 100px;
+  background-color: #a3a3a3;
   border-radius: 10px;
+  padding-top: 33.33333px;
+  border: 2px solid white;
+}
+
+#drum-machine #tabs-box .drum-pad:hover {
+  background-color: #818181;
+  border: 4px solid white;
 }
 /*# sourceMappingURL=style.css.map */

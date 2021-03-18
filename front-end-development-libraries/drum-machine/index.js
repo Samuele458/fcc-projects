@@ -1,3 +1,8 @@
+/*
+ *    Author:       Samuele Girgenti
+ *    Date:         18 / 03 / 2021
+ */
+
 //array of 9 drum machine sounds
 const sounds = [
   {
@@ -64,18 +69,18 @@ class DrumPad extends React.Component {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
-    this.keyPressed = this.keyPressed.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount() {
-    document.addEventListener("keydown", this.keyPressed);
+    document.addEventListener("keydown", this.handleKeyPress);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("keydown", this.keyPressed);
+    document.removeEventListener("keydown", this.handleKeyPress);
   }
 
-  keyPressed(key) {
+  handleKeyPress(key) {
     if (key.key.toUpperCase() == this.props.keyChar) {
       this.handleClick();
     }
@@ -94,7 +99,11 @@ class DrumPad extends React.Component {
         id={this.props.sound.name}
         onClick={this.handleClick}
       >
-        <audio id={this.props.keyChar} src={this.props.sound.url}></audio>
+        <audio
+          className="clip"
+          id={this.props.keyChar}
+          src={this.props.sound.url}
+        ></audio>
         {this.props.keyChar}
       </div>
     );
@@ -123,7 +132,6 @@ class DrumMachineApp extends React.Component {
     const keys = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
     let pads = [];
 
-    //display.setText("ehe");
     pads = sounds.map((sound, i) => {
       return (
         <DrumPad
