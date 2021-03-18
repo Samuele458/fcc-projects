@@ -1,5 +1,5 @@
 #zero {
-  -ms-grid-row: 5;
+  -ms-grid-row: 6;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: zero;
@@ -7,105 +7,105 @@
 }
 
 #one {
-  -ms-grid-row: 4;
+  -ms-grid-row: 5;
   -ms-grid-column: 1;
   grid-area: one;
   background-color: red;
 }
 
 #two {
-  -ms-grid-row: 4;
+  -ms-grid-row: 5;
   -ms-grid-column: 2;
   grid-area: two;
   background-color: red;
 }
 
 #three {
-  -ms-grid-row: 4;
+  -ms-grid-row: 5;
   -ms-grid-column: 3;
   grid-area: three;
   background-color: red;
 }
 
 #four {
-  -ms-grid-row: 3;
+  -ms-grid-row: 4;
   -ms-grid-column: 1;
   grid-area: four;
   background-color: red;
 }
 
 #five {
-  -ms-grid-row: 3;
+  -ms-grid-row: 4;
   -ms-grid-column: 2;
   grid-area: five;
   background-color: red;
 }
 
 #six {
-  -ms-grid-row: 3;
+  -ms-grid-row: 4;
   -ms-grid-column: 3;
   grid-area: six;
   background-color: red;
 }
 
 #seven {
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: seven;
   background-color: red;
 }
 
 #eight {
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: eight;
   background-color: red;
 }
 
 #nine {
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 3;
   grid-area: nine;
   background-color: red;
 }
 
 #decimal {
-  -ms-grid-row: 5;
+  -ms-grid-row: 6;
   -ms-grid-column: 3;
   grid-area: decimal;
   background-color: red;
 }
 
 #minus {
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 4;
   grid-area: minus;
   background-color: red;
 }
 
 #plus {
-  -ms-grid-row: 3;
+  -ms-grid-row: 4;
   -ms-grid-column: 4;
   grid-area: plus;
   background-color: red;
 }
 
 #divide {
-  -ms-grid-row: 1;
+  -ms-grid-row: 2;
   -ms-grid-column: 3;
   grid-area: divide;
   background-color: red;
 }
 
 #multiply {
-  -ms-grid-row: 1;
+  -ms-grid-row: 2;
   -ms-grid-column: 4;
   grid-area: multiply;
   background-color: red;
 }
 
 #clear {
-  -ms-grid-row: 1;
+  -ms-grid-row: 2;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: clear;
@@ -113,34 +113,88 @@
 }
 
 #equal {
-  -ms-grid-row: 4;
+  -ms-grid-row: 5;
   -ms-grid-row-span: 2;
   -ms-grid-column: 4;
   grid-area: equal;
   background-color: red;
 }
 
-#calculator #buttons-box {
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: Verdana;
+  background: repeating-linear-gradient(45deg, #e9e9e9 0px, #e9e9e9 450px, #bbbbbb 450px, #bbbbbb 900px);
+  height: 100vh;
+}
+
+#calculator {
   display: -ms-grid;
   display: grid;
-  -webkit-column-gap: 7.14286px;
-          column-gap: 7.14286px;
-  row-gap: 7.14286px;
-  width: 300px;
-  height: 400px;
-      grid-template-areas: "clear clear divide multiply" "seven eight nine minus" "four five six plus" "one two three equal" "zero zero decimal equal";
+  -webkit-column-gap: 10.71429px;
+          column-gap: 10.71429px;
+  row-gap: 10.71429px;
+  width: 450px;
+  height: 600px;
+      grid-template-areas: "display display display display" "clear clear divide multiply" "seven eight nine minus" "four five six plus" "one two three equal" "zero zero decimal equal";
   text-align: center;
+  margin: auto;
+  background-color: #2c2c2c;
+  border-radius: 2px;
+  padding: 15px;
+  margin-top: 30px;
 }
 
-#calculator #buttons-box .button {
+#calculator .button {
   width: auto;
   height: auto;
-  background-color: gray;
-  font-size: 16.66667px;
-  padding-top: 25px;
+  background-color: #e9e9e9;
+  font-size: 25px;
+  padding-top: 37.5px;
+  border-radius: 3px;
 }
 
-#calculator #buttons-box #equal {
-  padding-top: 75px;
+#calculator #equal {
+  padding-top: 112.5px;
+}
+
+#calculator #display {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-area: display;
+  background-color: #bbbbbb;
+  padding: 10px;
+  text-align: right;
+  border-radius: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#calculator #display .display-top {
+  background-color: #e9e9e9;
+  margin: 3px;
+  width: 100%;
+  border-radius: 3px;
+}
+
+#calculator #display .display-bottom {
+  background-color: #e9e9e9;
+  margin: 3px;
+  width: 100%;
+  border-radius: 3px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 /*# sourceMappingURL=style.css.map */

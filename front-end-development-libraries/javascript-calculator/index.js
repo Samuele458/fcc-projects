@@ -92,9 +92,19 @@ class Display extends React.Component {
   }
 
   render() {
-    return <div></div>;
+    return (
+      <div id="display">
+        <div className="display-top">{this.props.formulaText}</div>
+        <div className="display-bottom">{this.props.mainText}</div>
+      </div>
+    );
   }
 }
+
+Display.defaultProps = {
+  formulaText: "-",
+  mainText: "-",
+};
 
 class Button extends React.Component {
   constructor(props) {
@@ -140,7 +150,7 @@ class Calculator extends React.Component {
     return (
       <div id="calculator">
         <Display />
-        <div id="buttons-box">{buttons}</div>
+        {buttons}
       </div>
     );
   }
