@@ -5,7 +5,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-$tab-side: 100px;
+$tab-side: 70px;
 $tab-gap: $tab-side / 3;
 $tab-font-size: $tab-side / 3;
 
@@ -34,6 +34,7 @@ body {
   justify-content: space-around;
   align-items: center;
   margin-top: 20vh;
+  margin-down: 20vh;
   padding: 30px;
   margin-left: auto;
   margin-right: auto;
