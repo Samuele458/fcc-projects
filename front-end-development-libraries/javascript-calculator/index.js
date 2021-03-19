@@ -67,7 +67,7 @@ const keys = [
   {
     id: "decimal",
     text: ".",
-    type: "number",
+    type: "decimal",
   },
   {
     id: "minus",
@@ -77,7 +77,7 @@ const keys = [
   {
     id: "clear",
     text: "C",
-    type: "operator",
+    type: "clear",
   },
   {
     id: "equal",
@@ -135,11 +135,44 @@ class Calculator extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      displayMainText: "0",
+      displayFormulaText: "",
+    };
+
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(key) {
-    console.log(key);
+    if (key.type == "number") {
+      if (!isNaN(this.state.displayMainText)) {
+        if (this.state.displayMainText == "0") {
+          this.setState({
+            displayMainText: key.text,
+          });
+        } else {
+          this.setState((state) => ({
+            displayMainText: state.displayMainText + key.text,
+          }));
+        }
+      } else {
+        this.setState((state) => ({
+          displayMainText: key.text,
+        }));
+      }
+    }
+
+    if (key.type == "operator") {
+      this.setState({
+        displayMainText: key.text,
+      });
+    }
+
+    if (key.type == "clear") {
+      this.setState({
+        displayMainText: "0",
+      });
+    }
   }
 
   render() {
@@ -149,7 +182,15 @@ class Calculator extends React.Component {
     console.log("here");
     return (
       <div id="calculator">
-        <Display />
+        <Display
+          mainText={this.state.displayMainText}
+          formulaText={
+            "= " +
+            this.state.displayFormulaText +
+            " " +
+            this.state.displayMainText
+          }
+        />
         {buttons}
       </div>
     );
