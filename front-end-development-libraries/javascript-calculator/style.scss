@@ -1,3 +1,8 @@
+/*
+ *    Author:       Samuele Girgenti
+ *    Date:         19 / 03 / 2021
+ */
+
 $btn-side: 75px;
 $btn-ids: zero, one, two, three, four, five, six, seven, eight, nine, decimal,
   add, subtract, divide, multiply, clear, equals;
@@ -38,8 +43,8 @@ body {
     "clear clear divide multiply"
     "seven eight nine subtract"
     "four five six add"
-    "one two three equal"
-    "zero zero decimal equal";
+    "one two three equals"
+    "zero zero decimal equals";
 
   text-align: center;
   margin: auto;
@@ -57,11 +62,11 @@ body {
     border-radius: 3px;
   }
 
-  #equal {
+  #equals {
     padding-top: $btn-side * 1.5;
   }
 
-  #display {
+  #display-box {
     grid-area: display;
     background-color: rgb(187, 187, 187);
     padding: 10px;
@@ -77,12 +82,13 @@ body {
       border-radius: 3px;
     }
 
-    .display-bottom {
+    #display {
       background-color: rgb(233, 233, 233);
       margin: 3px;
       width: 100%;
       border-radius: 3px;
       flex-grow: 1;
+      font-size: 2rem;
     }
   }
 }

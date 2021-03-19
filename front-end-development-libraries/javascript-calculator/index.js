@@ -1,3 +1,8 @@
+/*
+ *    Author:       Samuele Girgenti
+ *    Date:         19 / 03 / 2021
+ */
+
 const keys = [
   {
     id: "zero",
@@ -93,9 +98,9 @@ class Display extends React.Component {
 
   render() {
     return (
-      <div id="display">
+      <div id="display-box">
         <div className="display-top">{this.props.formulaText}</div>
-        <div className="display-bottom">{this.props.mainText}</div>
+        <div id="display">{this.props.mainText}</div>
       </div>
     );
   }
@@ -144,6 +149,17 @@ class Calculator extends React.Component {
   }
 
   handleClick(key) {
+    if (key.type == "decimal") {
+      if (
+        !isNaN(this.state.displayMainText) &&
+        this.state.displayMainText.indexOf(".") == -1
+      ) {
+        this.setState((state) => ({
+          displayMainText: state.displayMainText + key.text,
+        }));
+      }
+    }
+
     if (key.type == "number") {
       if (!isNaN(this.state.displayMainText)) {
         if (this.state.displayMainText == "0") {
@@ -158,22 +174,39 @@ class Calculator extends React.Component {
       } else {
         this.setState((state) => ({
           displayMainText: key.text,
-          displayFormulaText:
-            state.displayFormulaText + " " + state.displayMainText + " ",
+          displayFormulaText: state.displayFormulaText + state.displayMainText,
         }));
       }
     }
 
     if (key.type == "operator") {
-      if (!isNaN(this.state.displayMainText)) {
+      let lastToken = this.state.displayFormulaText[
+        this.state.displayFormulaText.length - 1
+      ];
+
+      console.log(this.state.displayFormulaText, "Tokens: ", lastToken);
+      if (
+        !isNaN(this.state.displayMainText) ||
+        (key.text == "-" && this.state.displayMainText != "-")
+      ) {
         this.setState((state) => ({
           displayMainText: key.text,
-          displayFormulaText:
-            state.displayFormulaText + state.displayMainText + " ",
+          displayFormulaText: state.displayFormulaText + state.displayMainText,
         }));
       } else {
+        let currentText = this.state.displayFormulaText;
+        let newText = "";
+        let i;
+        for (i = currentText.length - 1; i >= 0; --i) {
+          if (!isNaN(parseInt(currentText[i]))) {
+            break;
+          }
+        }
+        newText = currentText.slice(0, i + 1);
+        console.log(newText, currentText);
         this.setState({
           displayMainText: key.text,
+          displayFormulaText: newText,
         });
       }
     }
@@ -194,14 +227,19 @@ class Calculator extends React.Component {
       formula = this.state.displayFormulaText;
 
       if (!isNaN(this.state.displayMainText)) {
-        text = eval(formula + " " + this.state.displayMainText)
-          .toFixed(4)
-          .toString();
+        text = (
+          Math.round(
+            (eval(formula + this.state.displayMainText) + Number.EPSILON) *
+              10000
+          ) / 10000
+        ).toString();
         console.log("formula: " + formula);
         formula = "";
         console.log("Result: " + text);
       } else {
-        text = eval(formula).toFixed(4).toString();
+        text = (
+          Math.round((eval(formula) + Number.EPSILON) * 10000) / 10000
+        ).toString();
         console.log("formula: " + formula);
         formula = "";
         console.log("Result: " + text);
@@ -224,10 +262,7 @@ class Calculator extends React.Component {
         <Display
           mainText={this.state.displayMainText}
           formulaText={
-            "= " +
-            this.state.displayFormulaText +
-            " " +
-            this.state.displayMainText
+            "= " + this.state.displayFormulaText + this.state.displayMainText
           }
         />
         {buttons}

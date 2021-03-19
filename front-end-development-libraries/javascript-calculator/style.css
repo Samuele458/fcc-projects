@@ -1,3 +1,7 @@
+/*
+ *    Author:       Samuele Girgenti
+ *    Date:         19 / 03 / 2021
+ */
 #zero {
   -ms-grid-row: 6;
   -ms-grid-column: 1;
@@ -76,17 +80,17 @@
   background-color: red;
 }
 
-#minus {
-  -ms-grid-row: 3;
+#add {
+  -ms-grid-row: 4;
   -ms-grid-column: 4;
-  grid-area: minus;
+  grid-area: add;
   background-color: red;
 }
 
-#plus {
-  -ms-grid-row: 4;
+#subtract {
+  -ms-grid-row: 3;
   -ms-grid-column: 4;
-  grid-area: plus;
+  grid-area: subtract;
   background-color: red;
 }
 
@@ -112,11 +116,11 @@
   background-color: red;
 }
 
-#equal {
+#equals {
   -ms-grid-row: 5;
   -ms-grid-row-span: 2;
   -ms-grid-column: 4;
-  grid-area: equal;
+  grid-area: equals;
   background-color: red;
 }
 
@@ -141,7 +145,7 @@ body {
   row-gap: 10.71429px;
   width: 450px;
   height: 600px;
-      grid-template-areas: "display display display display" "clear clear divide multiply" "seven eight nine minus" "four five six plus" "one two three equal" "zero zero decimal equal";
+      grid-template-areas: "display display display display" "clear clear divide multiply" "seven eight nine subtract" "four five six add" "one two three equals" "zero zero decimal equals";
   text-align: center;
   margin: auto;
   background-color: #2c2c2c;
@@ -159,11 +163,11 @@ body {
   border-radius: 3px;
 }
 
-#calculator #equal {
+#calculator #equals {
   padding-top: 112.5px;
 }
 
-#calculator #display {
+#calculator #display-box {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   -ms-grid-column-span: 4;
@@ -181,14 +185,14 @@ body {
           flex-direction: column;
 }
 
-#calculator #display .display-top {
+#calculator #display-box .display-top {
   background-color: #e9e9e9;
   margin: 3px;
   width: 100%;
   border-radius: 3px;
 }
 
-#calculator #display .display-bottom {
+#calculator #display-box #display {
   background-color: #e9e9e9;
   margin: 3px;
   width: 100%;
@@ -196,5 +200,6 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  font-size: 2rem;
 }
 /*# sourceMappingURL=style.css.map */
