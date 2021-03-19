@@ -70,7 +70,7 @@ const keys = [
     type: "decimal",
   },
   {
-    id: "minus",
+    id: "subtract",
     text: "-",
     type: "operator",
   },
@@ -80,9 +80,9 @@ const keys = [
     type: "clear",
   },
   {
-    id: "equal",
+    id: "equals",
     text: "=",
-    type: "operator",
+    type: "equals",
   },
 ];
 
@@ -158,19 +158,58 @@ class Calculator extends React.Component {
       } else {
         this.setState((state) => ({
           displayMainText: key.text,
+          displayFormulaText:
+            state.displayFormulaText + " " + state.displayMainText + " ",
         }));
       }
     }
 
     if (key.type == "operator") {
-      this.setState({
-        displayMainText: key.text,
-      });
+      if (!isNaN(this.state.displayMainText)) {
+        this.setState((state) => ({
+          displayMainText: key.text,
+          displayFormulaText:
+            state.displayFormulaText + state.displayMainText + " ",
+        }));
+      } else {
+        this.setState({
+          displayMainText: key.text,
+        });
+      }
     }
 
     if (key.type == "clear") {
       this.setState({
         displayMainText: "0",
+        displayFormulaText: "",
+      });
+    }
+
+    if (key.type == "equals") {
+      let text = "";
+      let formula = "";
+      let result = 0;
+
+      text = this.state.displayMainText;
+      formula = this.state.displayFormulaText;
+
+      if (!isNaN(this.state.displayMainText)) {
+        text = eval(formula + " " + this.state.displayMainText)
+          .toFixed(4)
+          .toString();
+        console.log("formula: " + formula);
+        formula = "";
+        console.log("Result: " + text);
+      } else {
+        text = eval(formula).toFixed(4).toString();
+        console.log("formula: " + formula);
+        formula = "";
+        console.log("Result: " + text);
+      }
+
+      this.setState({
+        displayMainText: text,
+        displayFormulaText: formula,
       });
     }
   }

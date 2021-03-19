@@ -1,6 +1,6 @@
 $btn-side: 75px;
 $btn-ids: zero, one, two, three, four, five, six, seven, eight, nine, decimal,
-  minus, plus, divide, multiply, clear, equal;
+  add, subtract, divide, multiply, clear, equals;
 
 @each $btn in $btn-ids {
   ##{$btn} {
@@ -36,8 +36,8 @@ body {
   grid-template-areas:
     "display display display display"
     "clear clear divide multiply"
-    "seven eight nine minus"
-    "four five six plus"
+    "seven eight nine subtract"
+    "four five six add"
     "one two three equal"
     "zero zero decimal equal";
 
