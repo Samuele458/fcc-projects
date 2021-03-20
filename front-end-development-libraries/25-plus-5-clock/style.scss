@@ -20,17 +20,17 @@
     margin: auto;
     text-align: center;
     width: 5rem;
+  }
 
-    #controls {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-    }
+  #controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 
-    .fa-play,
-    .fa-stop {
-      display: inline-block;
-    }
+  .fa-play,
+  .fa-stop {
+    display: inline-block;
   }
 }
 

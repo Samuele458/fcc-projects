@@ -31,7 +31,7 @@
   width: 5rem;
 }
 
-#clock #timer #controls {
+#clock #controls {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,8 +43,8 @@
       justify-content: space-around;
 }
 
-#clock #timer .fa-play,
-#clock #timer .fa-stop {
+#clock .fa-play,
+#clock .fa-stop {
   display: inline-block;
 }
 

@@ -57,11 +57,9 @@ class Timer extends React.Component {
     return (
       <div id="timer">
         <p id="timer-label">{this.props.label}</p>
-        <p id="time-left">10:23</p>
-        <div id="controls">
-          <i className="fas fa-play"></i>
-          <i className="fas fa-stop"></i>
-        </div>
+        <p id="time-left">
+          {this.props.mm}:{this.props.ss}
+        </p>
       </div>
     );
   }
@@ -75,30 +73,79 @@ class Clock extends React.Component {
     this.state = {
       sessionLength: 25,
       breakLength: 5,
+      timerState: false,
+      mm: 25,
+      ss: 0,
+      action: "session",
+      intervalID: 0,
     };
 
     this.setSessionLength = this.setSessionLength.bind(this);
     this.setBreakLength = this.setBreakLength.bind(this);
+    this.startStopTimer = this.startStopTimer.bind(this);
+    this.resetTimer = this.resetTimer.bind(this);
   }
 
   setSessionLength(newSession) {
-    if (newSession >= 0)
+    if (newSession >= 0 && newSession <= 60)
       this.setState({
         sessionLength: newSession,
       });
   }
 
   setBreakLength(newbreak) {
-    if (newbreak >= 0)
+    if (newbreak >= 0 && newbreak <= 60)
       this.setState({
         breakLength: newbreak,
       });
   }
 
+  startStopTimer() {
+    console.log("state before trigger: ", this.state.timerState);
+    console.log("start-stop triggered");
+    console.log("IntervalID: ", this.state.intervalID);
+    if (!this.state.timerState) {
+      this.setState((state) => ({
+        timerState: !state.timerState,
+        intervalID: setInterval(() => {
+          console.log("interval");
+        }, 1000),
+      }));
+    } else {
+      if (this.state.intervalID != 0) {
+        clearInterval(this.state.intervalID);
+        this.setState({
+          timerState: false,
+        });
+      }
+    }
+  }
+
+  resetTimer() {
+    this.setState({
+      sessionLength: 25,
+      breakLength: 5,
+      timerState: false,
+    });
+  }
+
   render() {
+    let timer = (
+      <Timer
+        label="Session"
+        state={this.state.timerState}
+        mm={this.state.mm}
+        ss={this.state.ss}
+      />
+    );
+
     return (
       <div id="clock">
-        <Timer label="Session" />
+        {timer}
+        <div id="controls">
+          <i className="fas fa-play" onClick={this.startStopTimer}></i>
+          <i className="fas fa-stop" onClick={this.resetTimer}></i>
+        </div>
         <div id="counters">
           <Counter
             counterName="session"
