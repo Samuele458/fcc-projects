@@ -2,6 +2,17 @@
 class Counter extends React.Component {
   constructor(props) {
     super(props);
+
+    this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
+  }
+
+  increment() {
+    this.props.valueHandler(this.props.value + 1);
+  }
+
+  decrement() {
+    this.props.valueHandler(this.props.value - 1);
   }
 
   render() {
@@ -10,17 +21,25 @@ class Counter extends React.Component {
     return (
       <div className="counter">
         <p className="counter-title" id={`${counterName}-label`}>
-          Counter
+          {this.props.counterName}
         </p>
         <div className="counter-content-box">
           <p className="counter-plus">
-            <i id={`${counterName}-increment`} className="fas fa-plus"></i>
+            <i
+              id={`${counterName}-increment`}
+              className="fas fa-plus"
+              onClick={this.increment}
+            ></i>
           </p>
           <p id={`${counterName}-length`} className="counter-number">
-            25
+            {this.props.value}
           </p>
           <p className="counter-minus">
-            <i id={`${counterName}-decrement`} className="fas fa-minus"></i>
+            <i
+              id={`${counterName}-decrement`}
+              className="fas fa-minus"
+              onClick={this.decrement}
+            ></i>
           </p>
         </div>
       </div>
@@ -52,6 +71,28 @@ class Timer extends React.Component {
 class Clock extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      sessionLength: 25,
+      breakLength: 5,
+    };
+
+    this.setSessionLength = this.setSessionLength.bind(this);
+    this.setBreakLength = this.setBreakLength.bind(this);
+  }
+
+  setSessionLength(newSession) {
+    if (newSession >= 0)
+      this.setState({
+        sessionLength: newSession,
+      });
+  }
+
+  setBreakLength(newbreak) {
+    if (newbreak >= 0)
+      this.setState({
+        breakLength: newbreak,
+      });
   }
 
   render() {
@@ -59,8 +100,16 @@ class Clock extends React.Component {
       <div id="clock">
         <Timer label="Session" />
         <div id="counters">
-          <Counter counterName="session" />
-          <Counter counterName="break" />
+          <Counter
+            counterName="session"
+            value={this.state.sessionLength}
+            valueHandler={this.setSessionLength}
+          />
+          <Counter
+            counterName="break"
+            value={this.state.breakLength}
+            valueHandler={this.setBreakLength}
+          />
         </div>
       </div>
     );

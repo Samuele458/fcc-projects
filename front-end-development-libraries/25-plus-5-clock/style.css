@@ -7,6 +7,9 @@
 
 #clock {
   background-color: red;
+  width: 20rem;
+  margin: auto;
+  margin-top: 20vh;
 }
 
 #clock #counters {
@@ -25,6 +28,7 @@
 #clock #timer {
   margin: auto;
   text-align: center;
+  width: 5rem;
 }
 
 #clock #timer #controls {
