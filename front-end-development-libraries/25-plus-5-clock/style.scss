@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#clock {
+  background-color: red;
+  #counters {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  #timer {
+    margin: auto;
+    text-align: center;
+
+    #controls {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+
+    .fa-play,
+    .fa-stop {
+      display: inline-block;
+    }
+  }
+}
+
+.counter {
+  margin: 10px;
+  .counter-title {
+    display: block;
+    text-align: center;
+  }
+
+  .counter-content-box {
+    background-color: green;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .counter-plus,
+  .counter-minus,
+  .counter-number {
+    padding: 10px;
+  }
+}
