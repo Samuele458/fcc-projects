@@ -56,7 +56,7 @@ class Timer extends React.Component {
   render() {
     return (
       <div id="timer">
-        <p id="timer-label">{this.props.label}</p>
+        <p id="timer-label">{this.props.action}</p>
         <p id="time-left">
           {this.props.mm}:{this.props.ss}
         </p>
@@ -85,6 +85,8 @@ class Clock extends React.Component {
     this.startStopTimer = this.startStopTimer.bind(this);
     this.resetTimer = this.resetTimer.bind(this);
     this.timerNextStep = this.timerNextStep.bind(this);
+    this.encodeTime = this.encodeTime.bind(this);
+    this.beep = this.beep.bind(this);
   }
 
   setSessionLength(newSession) {
@@ -152,15 +154,14 @@ class Clock extends React.Component {
         mm = this.state.sessionLength;
       }
       ss = 0;
-    }
-
-    if (ss == 0) {
+      this.beep();
+    } else if (ss == 0) {
       mm--;
       ss = 59;
     } else {
       ss--;
     }
-    console.log("dec");
+    console.log(this.state.action);
     this.setState({
       mm: mm,
       ss: ss,
@@ -169,20 +170,42 @@ class Clock extends React.Component {
   }
 
   resetTimer() {
+    if (this.state.intervalID != 0) {
+      clearInterval(this.state.intervalID);
+    }
     this.setState({
       sessionLength: 25,
       breakLength: 5,
+      mm: 25,
+      ss: 0,
       timerState: false,
+      action: "session",
     });
+
+    const audioElem = document.getElementById("beep");
+    audioElem.pause();
+    audioElem.currentTime = 0;
+  }
+
+  encodeTime(time) {
+    if (time < 10) {
+      return "0" + time.toString();
+    } else {
+      return time.toString();
+    }
+  }
+
+  beep() {
+    const audioElem = document.getElementById("beep");
+    audioElem.play();
   }
 
   render() {
     let timer = (
       <Timer
-        label="Session"
         state={this.state.timerState}
-        mm={this.state.mm}
-        ss={this.state.ss}
+        mm={this.encodeTime(this.state.mm)}
+        ss={this.encodeTime(this.state.ss)}
         action={this.state.action}
       />
     );
@@ -191,12 +214,16 @@ class Clock extends React.Component {
       <div id="clock">
         {timer}
         <div id="controls">
-          <i className="fas fa-play" onClick={this.startStopTimer}></i>
-          <i className="fas fa-stop" onClick={this.resetTimer}></i>
+          <i
+            id="start_stop"
+            className="fas fa-play"
+            onClick={this.startStopTimer}
+          ></i>
+          <i id="reset" className="fas fa-stop" onClick={this.resetTimer}></i>
         </div>
         <div id="counters">
           <Counter
-            counterName={this.state.action}
+            counterName="session"
             value={this.state.sessionLength}
             valueHandler={this.setSessionLength}
           />
@@ -206,6 +233,10 @@ class Clock extends React.Component {
             valueHandler={this.setBreakLength}
           />
         </div>
+        <audio
+          id="beep"
+          src="https://samuelegirgenti.it.nf/sounds/beep.mp3"
+        ></audio>
       </div>
     );
   }
