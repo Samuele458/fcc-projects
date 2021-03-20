@@ -84,20 +84,39 @@ class Clock extends React.Component {
     this.setBreakLength = this.setBreakLength.bind(this);
     this.startStopTimer = this.startStopTimer.bind(this);
     this.resetTimer = this.resetTimer.bind(this);
+    this.timerNextStep = this.timerNextStep.bind(this);
   }
 
   setSessionLength(newSession) {
-    if (newSession >= 0 && newSession <= 60)
-      this.setState({
-        sessionLength: newSession,
-      });
+    if (!this.state.timerState && newSession > 0 && newSession <= 60) {
+      if (this.state.action != "session") {
+        this.setState({
+          sessionLength: newSession,
+        });
+      } else {
+        this.setState({
+          mm: newSession,
+          ss: 0,
+          sessionLength: newSession,
+        });
+      }
+    }
   }
 
   setBreakLength(newbreak) {
-    if (newbreak >= 0 && newbreak <= 60)
-      this.setState({
-        breakLength: newbreak,
-      });
+    if (!this.state.timerState && newbreak > 0 && newbreak <= 60) {
+      if (this.state.action != "break") {
+        this.setState({
+          breakLength: newbreak,
+        });
+      } else {
+        this.setState({
+          mm: newbreak,
+          ss: 0,
+          breakLength: newbreak,
+        });
+      }
+    }
   }
 
   startStopTimer() {
@@ -107,9 +126,7 @@ class Clock extends React.Component {
     if (!this.state.timerState) {
       this.setState((state) => ({
         timerState: !state.timerState,
-        intervalID: setInterval(() => {
-          console.log("interval");
-        }, 1000),
+        intervalID: setInterval(this.timerNextStep, 1000),
       }));
     } else {
       if (this.state.intervalID != 0) {
@@ -119,6 +136,36 @@ class Clock extends React.Component {
         });
       }
     }
+  }
+
+  timerNextStep() {
+    let mm = this.state.mm;
+    let ss = this.state.ss;
+    let action = this.state.action;
+
+    if (mm == 0 && ss == 0) {
+      if (action == "session") {
+        action = "break";
+        mm = this.state.breakLength;
+      } else if (action == "break") {
+        action = "session";
+        mm = this.state.sessionLength;
+      }
+      ss = 0;
+    }
+
+    if (ss == 0) {
+      mm--;
+      ss = 59;
+    } else {
+      ss--;
+    }
+    console.log("dec");
+    this.setState({
+      mm: mm,
+      ss: ss,
+      action: action,
+    });
   }
 
   resetTimer() {
@@ -136,6 +183,7 @@ class Clock extends React.Component {
         state={this.state.timerState}
         mm={this.state.mm}
         ss={this.state.ss}
+        action={this.state.action}
       />
     );
 
@@ -148,7 +196,7 @@ class Clock extends React.Component {
         </div>
         <div id="counters">
           <Counter
-            counterName="session"
+            counterName={this.state.action}
             value={this.state.sessionLength}
             valueHandler={this.setSessionLength}
           />
