@@ -1,3 +1,7 @@
+/*
+ *    Author:       Samuele Girgenti
+ *    Date:         21 / 03 / 2021
+ */
 * {
   margin: 0;
   padding: 0;
@@ -5,11 +9,21 @@
           box-sizing: border-box;
 }
 
+body {
+  font-family: Verdana;
+  background: repeating-linear-gradient(45deg, #4da9f5 0px, #4da9f5 150px, #4fa0e2 150px, #4fa0e2 200px);
+  height: 100vh;
+  font-size: 40px;
+}
+
 #clock {
-  background-color: red;
-  width: 20rem;
+  background-color: #25a9ca;
+  width: 47rem;
   margin: auto;
   margin-top: 20vh;
+  border-radius: 20px;
+  -webkit-box-shadow: 4px 4px 2px black;
+          box-shadow: 4px 4px 2px black;
 }
 
 #clock #counters {
@@ -28,7 +42,11 @@
 #clock #timer {
   margin: auto;
   text-align: center;
-  width: 5rem;
+  width: 100%;
+}
+
+#clock #timer #timer-label {
+  width: 100%;
 }
 
 #clock #controls {
@@ -58,7 +76,7 @@
 }
 
 .counter .counter-content-box {
-  background-color: green;
+  background-color: #1f91dd;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,6 +87,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border-radius: 20px;
 }
 
 .counter .counter-plus,

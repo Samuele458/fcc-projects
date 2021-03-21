@@ -1,3 +1,8 @@
+/*
+ *    Author:       Samuele Girgenti
+ *    Date:         21 / 03 / 2021
+ */
+
 //Counter
 class Counter extends React.Component {
   constructor(props) {
