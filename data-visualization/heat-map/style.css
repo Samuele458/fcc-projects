@@ -10,15 +10,28 @@
 }
 
 body {
-  background-color: rgb(0, 255, 106);
+  background-color: rgb(191, 230, 228);
   font-family: Verdana;
 }
 
 .graph {
-  background-color: rgb(200, 255, 0);
   margin: auto;
   margin-top: 5vh;
   width: 1300px;
-  height: 550px;
+  height: 100%;
   border-radius: 4px;
+}
+
+.cell {
+  fill: rgb(255, 255, 255);
+  /*stroke: rgba(0, 0, 0, 0.507);
+  stroke-width: 0.5px;*/
+}
+
+.graph h1 {
+  text-align: center;
+}
+
+.graph h2 {
+  text-align: center;
 }
