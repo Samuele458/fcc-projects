@@ -1,3 +1,8 @@
+/*
+ *  Author: Samuele Girgenti
+ *  Date: 23 / 03 / 2021
+ */
+
 let width = 700;
 let height = 350;
 let padding = 50;
@@ -10,6 +15,9 @@ d3.json(
       d.Time = new Date(Date.UTC(1970, 0, 1, 0, parsedTime[0], parsedTime[1]));
       return d;
     });
+
+    const itaColor = "rgb(51, 204, 51)";
+    const othersColor = "rgb(255, 209, 26)";
 
     let xScale = d3
       .scaleLinear()
@@ -27,9 +35,15 @@ d3.json(
     const title = d3
       .select(".graph")
       .append("h1")
-      .text("Graph")
+      .text("Data on cyclists doping")
       .style("text-align", "center")
       .attr("id", "title");
+
+    const tooltip = d3
+      .select("body")
+      .append("div")
+      .attr("id", "tooltip")
+      .style("opacity", "0.1");
 
     const svg = d3
       .select(".graph")
@@ -47,7 +61,24 @@ d3.json(
       .attr("cy", (d) => yScale(d.Time))
       .attr("class", "dot")
       .attr("data-xvalue", (d) => d.Year)
-      .attr("data-yvalue", (d) => d.Time);
+      .attr("data-yvalue", (d) => d.Time)
+      .attr("fill", (d) => {
+        if (d.Nationality === "ITA") return itaColor;
+        return othersColor;
+      })
+      .on("mouseover", (d) => {
+        tooltip
+          .style("left", d3.event.pageX + "px")
+          .style("top", d3.event.pageY + "px")
+          .style("opacity", 1)
+          .attr("data-year", d.Year)
+          .html(
+            `<p>Name: ${d.Name}</p><p>Time: ${d.Time}</p><p>Year: ${d.Year}</p>`
+          );
+      })
+      .on("mouseout", (d) => {
+        tooltip.style("opacity", 0);
+      });
 
     const xAxis = d3.axisBottom(xScale).ticks(13).tickFormat(d3.format("1000"));
     const yAxis = d3.axisLeft(yScale).tickFormat(d3.timeFormat("%M:%S"));
@@ -75,28 +106,30 @@ d3.json(
 
     legend
       .append("text")
-      .text("ciao")
+      .text("Italians")
       .attr("y", "-100")
-      .attr("x", width - padding * 1.4);
+      .attr("x", width - padding * 2);
 
     legend
       .append("rect")
       .attr("y", "-112")
       .attr("x", width - padding / 1.8)
       .attr("width", 15)
-      .attr("height", 15);
+      .attr("height", 15)
+      .attr("fill", itaColor);
 
     legend
       .append("text")
-      .text("cioo")
+      .text("Others")
       .attr("y", "-70")
-      .attr("x", width - padding * 1.4);
+      .attr("x", width - padding * 2);
 
     legend
       .append("rect")
       .attr("y", "-82")
       .attr("x", width - padding / 1.8)
       .attr("width", 15)
-      .attr("height", 15);
+      .attr("height", 15)
+      .attr("fill", othersColor);
   }
 );
