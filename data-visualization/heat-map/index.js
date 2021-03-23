@@ -11,25 +11,12 @@ d3.json(
       return d;
     });
 
-    let monthsDates = [
-      new Date(Date.UTC(1970, 12, 3, 5, 5, 5)),
-      new Date(Date.UTC(1970, 1, 3, 5, 5, 5)),
-      new Date(Date.UTC(1970, 2, 3, 5, 5, 5)),
-      new Date(Date.UTC(1970, 3, 3, 5, 5, 5)),
-      new Date(Date.UTC(1970, 4, 3, 5, 5, 5)),
-      new Date(Date.UTC(1970, 5, 3, 5, 5, 5)),
-      new Date(Date.UTC(1970, 6, 3, 5, 5, 5)),
-      new Date(Date.UTC(1970, 7, 3, 5, 5, 5)),
-      new Date(Date.UTC(1970, 8, 3, 5, 5, 5)),
-      new Date(Date.UTC(1970, 9, 3, 5, 5, 5)),
-      new Date(Date.UTC(1970, 10, 3, 5, 5, 5)),
-      new Date(Date.UTC(1970, 11, 3, 5, 5, 5)),
-    ];
-    /*for (let i = 1; i < 13; ++i) {
-      monthsDates.push(new Date(Date.UTC(1970, i, 3, 5, 5, 5)));
-    }*/
+    const elementWidth =
+      (width - padding * 2) /
+      (dataset[dataset.length - 1].year - dataset[0].year);
+    const elementHeight = (height - padding * 2) / 12;
 
-    console.log(monthsDates);
+    console.log(dataset[dataset.length - 1].year - dataset[0].year);
 
     let xScale = d3
       .scaleLinear()
@@ -60,6 +47,23 @@ d3.json(
       .attr("width", width)
       .attr("height", height);
 
+    svg
+      .selectAll("rect")
+      .data(dataset)
+      .enter()
+      .append("rect")
+      .attr("width", elementWidth)
+      .attr("height", elementHeight)
+      .style("fill", "red")
+      .attr("x", (d, i) => {
+        return padding + Math.floor(i / 12) * elementWidth;
+      })
+
+      .attr("y", (d, i) => {
+        console.log(dataset[dataset.length - 1].year - dataset[0].year);
+        return padding + (i % 12) * elementHeight;
+      });
+
     const xAxis = d3.axisBottom(xScale).ticks(20).tickFormat(d3.format("1000"));
     const yAxis = d3.axisLeft(yScale);
 
@@ -73,7 +77,5 @@ d3.json(
       .append("g")
       .attr("transform", "translate(" + padding + ", 0)")
       .call(yAxis);
-
-    console.log(dataset);
   }
 );
