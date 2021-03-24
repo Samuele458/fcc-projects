@@ -1,6 +1,6 @@
 /*
  *  Author: Samuele Girgenti
- *  Date: 22 / 03 / 2021
+ *  Date: 24 / 03 / 2021
  */
 
 * {
@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: rgb(191, 230, 228);
+  background-color: rgb(228, 228, 228);
   font-family: Verdana;
 }
 
@@ -24,8 +24,6 @@ body {
 
 .cell {
   fill: rgb(255, 255, 255);
-  /*stroke: rgba(0, 0, 0, 0.507);
-  stroke-width: 0.5px;*/
 }
 
 .graph h1 {
