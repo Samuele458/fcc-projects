@@ -1,0 +1,28 @@
+/*
+ *  Author: Samuele Girgenti
+ *  Date: 24 / 03 / 2021
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(228, 228, 228);
+  font-family: Verdana;
+}
+
+.graph {
+  margin: auto;
+  margin-top: 5vh;
+  width: 1300px;
+  height: 500px;
+  border-radius: 4px;
+  background-color: red;
+}
+
+.graph h1 {
+  text-align: center;
+}
