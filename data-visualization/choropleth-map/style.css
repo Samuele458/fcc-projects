@@ -10,19 +10,49 @@
 }
 
 body {
-  background-color: rgb(228, 228, 228);
+  background-color: rgb(233, 66, 60);
   font-family: Verdana;
 }
 
 .graph {
   margin: auto;
   margin-top: 5vh;
-  width: 1300px;
-  height: 500px;
+  width: 1100px;
+  height: 700px;
   border-radius: 4px;
-  background-color: red;
+  background-color: rgb(242, 242, 242);
 }
 
 .graph h1 {
+  padding: 10px;
   text-align: center;
+}
+.graph h3 {
+  text-align: center;
+}
+
+.graph svg {
+  display: block;
+  margin: auto;
+}
+
+.legend-rect {
+  stroke-width: 1px;
+  stroke: black;
+}
+
+#tooltip {
+  pointer-events: none;
+  width: 200px;
+  height: 30px;
+  position: absolute;
+  font-size: 12px;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.864);
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }
