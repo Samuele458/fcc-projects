@@ -5,8 +5,8 @@ const margin = {
   left: 20,
 };
 
-const width = 600 + margin.left + margin.right;
-const height = 500 + margin.top + margin.bottom;
+const width = 800 + margin.left + margin.right;
+const height = 600 + margin.top + margin.bottom;
 
 const svg = d3
   .select(".graph")
@@ -50,12 +50,12 @@ d3.json(
       .enter()
       .append("text")
       .attr("class", "tile-text")
-      .attr("x", (d) => d.x0 + margin.left + 10)
-      .attr("y", (d) => d.y0 + margin.top + 10)
+      .attr("x", (d) => d.x0 + margin.left)
+      .attr("y", (d) => d.y0 + margin.top)
       //.text("ciao ehehheh  come stai eh")
       .selectAll("tspan")
       .data((d) =>
-        d.data.name.split(" ").map((elem) => {
+        d.data.name.split(/\s|\//gi).map((elem) => {
           return {
             text: elem,
             x: d.x0,
@@ -65,8 +65,8 @@ d3.json(
       )
       .enter()
       .append("tspan")
-      .attr("x", (d) => 4)
-      .attr("y", (d, i) => d.y0 + margin.top + 10 + i * 100)
-      .text((d) => d);
+      .attr("x", (d) => d.x + margin.left + 3)
+      .attr("y", (d, i) => d.y + margin.top + 10 + i * 7)
+      .text((d) => d.text);
   }
 );
