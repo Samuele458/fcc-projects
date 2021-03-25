@@ -1,6 +1,6 @@
 /*
  *  Author: Samuele Girgenti
- *  Date: 24 / 03 / 2021
+ *  Date: 25 / 03 / 2021
  */
 
 * {
@@ -15,10 +15,9 @@ body {
 }
 
 .graph {
-  margin: auto;
+  margin: 30px;
   margin-top: 5vh;
-  width: 1100px;
-  height: 700px;
+
   border-radius: 4px;
   background-color: rgb(242, 242, 242);
 }
@@ -37,8 +36,31 @@ body {
 }
 
 .tile {
+  rx: 2px;
+  ry: 2px;
 }
 
 .tile-text {
   font-size: 7px;
+}
+
+#tooltip {
+  pointer-events: none;
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  font-size: 12px;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.864);
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.legend-item {
+  rx: 3px;
+  ry: 3px;
 }
