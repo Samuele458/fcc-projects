@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
 const dns = require('dns');
+var url = require('url'); 
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -13,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // Basic Configuration
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 46679; 
 
 app.use(cors());
 
@@ -63,23 +64,44 @@ const createNewUrl = ( url, id, done ) => {
 }
 
 app.post( "/api/shorturl/new", (req,res) => {
-  dns.lookup(req.body.url, {all:true}, (err) => {
-    if(err) return console.log(err);
+  let url_sanitized = req.body.url;
+  var q = url.parse(url_sanitized, true);
+  const hostname = q.host;
+  dns.lookup(hostname, {all:true}, (err) => {
+    if(err||hostname===null) return res.json({ error: 'invalid url' });
     Url.find({
-      url_name: req.body.url
+      url_name: url_sanitized
     },(err,data) => {
       if(err) return console.log(err);
       getNextId((id)=>{
-        createNewUrl(req.body.url,id,()=>{
+        createNewUrl(url_sanitized,id,()=>{
           console.log("creato: ", data);
           res.json({
-            original_url: req.body.url,
+            original_url: url_sanitized,
             short_url: id
           })
-        });
+        }); 
       });
     })
   })
+})
+
+app.get( "/api/shorturl/:id", (req,res) => {
+  console.log(req.params)
+  Url.find({
+    url_id: parseInt(req.params.id)
+  }, (err, data) => {
+    if(err) return console.log(err);
+    if( typeof data[0] === 'undefined' ) {
+      res.send({
+        error:	"No short URL found for the given input"
+      })
+    } else {
+      res.writeHead(301,{Location: data[0].url_name});
+      res.end();
+    }
+  })
+
 })
 
 
