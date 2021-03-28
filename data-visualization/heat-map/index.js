@@ -42,8 +42,6 @@ d3.json(
       (dataset[dataset.length - 1].year - dataset[0].year);
     const elementHeight = (height - padding * 2) / 12;
 
-    console.log(dataset[dataset.length - 1].year - dataset[0].year);
-    console.log(elementWidth);
     d3.select(".graph")
       .append("h1")
       .text("Global temperature")
@@ -93,11 +91,7 @@ d3.json(
         colors[2].color,
         colors[3].color,
       ]);
-    console.log(colorScale("0.8"));
-    console.log([
-      d3.min(dataset, (d) => d.temperature),
-      d3.max(dataset, (d) => d.temperature),
-    ]);
+    
 
     const tooltip = d3
       .select(".graph")
@@ -193,7 +187,7 @@ d3.json(
         "translate(" + padding + "," + (height - padding / 2.4 - 20) + ")"
       )
       .attr("fill", "blue");
-    console.log((width / 7 - padding) / 4);
+    
     legend
       .append("rect")
       .attr("width", (width / 7 - padding) / 4)

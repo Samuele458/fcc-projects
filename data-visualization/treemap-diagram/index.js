@@ -40,7 +40,7 @@ const svg = d3
 d3.json(
   "https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/video-game-sales-data.json",
   (data) => {
-    console.log(data);
+    
     let root = d3.hierarchy(data).sum((d) => {
       return d.value;
     });
@@ -58,7 +58,7 @@ d3.json(
     };
     const color = d3.scaleOrdinal(d3.schemeCategory20.map(fader));
 
-    console.log(d3.schemeCategory50);
+    
     svg
       .selectAll("rect")
       .data(root.leaves())

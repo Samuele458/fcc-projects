@@ -100,7 +100,7 @@ function ready(error, educational_data, us_data) {
   const minValue = d3.min(educational_data, (d) => d.bachelorsOrHigher);
   const maxValue = d3.max(educational_data, (d) => d.bachelorsOrHigher);
 
-  console.log(minValue, maxValue);
+  
 
   let legendValues = [
     minValue,
@@ -141,5 +141,5 @@ function ready(error, educational_data, us_data) {
     })
     .attr("class", "legend-rect");
 
-  console.log(legendValues);
+  
 }
