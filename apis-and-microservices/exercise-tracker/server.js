@@ -1,3 +1,8 @@
+/*
+ *  Author:   Samuele Girgenti
+ *  Date:     28 / 03 / 2021
+ */
+
 require("dotenv").config();
 const express = require("express");
 const app = express();
@@ -58,7 +63,6 @@ const listener = app.listen(process.env.PORT || 3000, () => {
 });
 
 app.post("/api/exercise/new-user", (req, res) => {
-  console.log(req.body);
   const user = new User({
     username: req.body.username,
   });
@@ -84,7 +88,6 @@ app.post("/api/exercise/add", (req, res) => {
     },
     (err, userData) => {
       if (err) return console.log(err);
-      console.log(userData);
       const exerciseDate = req.body.date || new Date();
       const exercise = new Exercise({
         userId: req.body.userId,
@@ -99,7 +102,6 @@ app.post("/api/exercise/add", (req, res) => {
         data.description = exerciseData.description;
         data.duration = exerciseData.duration;
         data.date = dateformat(exerciseData.date, "ddd mmm dd yyyy");
-        console.log(exerciseData.date instanceof Date);
         res.json(data);
       });
     }
@@ -116,9 +118,7 @@ app.get("/api/exercise/log", (req, res) => {
 
       let dataLimit = req.query.limit || "0";
       dataLimit = parseInt(dataLimit);
-      //let dataFrom = req.query.from ||
 
-      //console.log("Seraching user:", eser);
       Exercise.find({
         userId: userData[0]._id,
         date: {
@@ -143,7 +143,6 @@ app.get("/api/exercise/log", (req, res) => {
             return elemObj;
           });
 
-          console.log(data);
           res.json(data);
         });
     }
