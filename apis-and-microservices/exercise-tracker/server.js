@@ -106,4 +106,46 @@ app.post("/api/exercise/add", (req, res) => {
   );
 });
 
-app.get("/api/exercise/log", (req, res) => {});
+app.get("/api/exercise/log", (req, res) => {
+  User.find(
+    {
+      _id: req.query.userId,
+    },
+    (err, userData) => {
+      if (err) return console.log(err);
+
+      let dataLimit = req.query.limit || "0";
+      dataLimit = parseInt(dataLimit);
+      //let dataFrom = req.query.from ||
+
+      //console.log("Seraching user:", eser);
+      Exercise.find({
+        userId: userData[0]._id,
+        date: {
+          $gte: req.query.from || "1900-01-01",
+          $lte: req.query.to || "2030-01-01",
+        },
+      })
+        .select({
+          _id: 0,
+          __v: 0,
+        })
+        .limit(dataLimit)
+        .exec((err, exerciseData) => {
+          if (err) return console.log(err);
+
+          let data = userData[0].toObject();
+          delete data.__v;
+          data.count = exerciseData.length;
+          data.log = exerciseData.map((elem) => {
+            let elemObj = elem.toObject();
+            elemObj.date = dateformat(elem.date, "ddd mmm dd yyyy");
+            return elemObj;
+          });
+
+          console.log(data);
+          res.json(data);
+        });
+    }
+  );
+});
