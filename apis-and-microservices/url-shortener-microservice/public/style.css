@@ -1,8 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: Arial, sans-serif;
   font-size: 16px;
   color: #222;
-  background-color: #fff;
+  background-color: rgb(247, 47, 47);
   text-align: center;
   line-height: 1.4em;
 }
@@ -12,14 +17,9 @@ main {
   margin-top: 40px;
 }
 
-h3 {
+h1 {
   margin-top: 30px;
-}
-
-
-
-.user-stories li {
-  margin-bottom: 1em;
+  font-size: 30px;
 }
 
 a {
@@ -37,10 +37,31 @@ label {
 }
 
 input {
-  padding: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  display: inline-block;
 }
 
-input[type='text'] {
-  width: 220px;
+#url-input {
+  width: 400px;
   text-align: center;
+  border: 1px solid #ccc;
+  height: 34px;
+  font-size: 20px;
+}
+
+#submit-button {
+  height: 36px;
+  border: none;
+  font-size: 20px;
+  background-color: rgb(0, 132, 255);
+  color: white;
+}
+
+.container {
+  background-color: rgb(235, 235, 235);
+  border-radius: 15px;
+  box-shadow: 5px 5px 2px black;
+  margin: 50px;
+  padding: 100px;
 }
