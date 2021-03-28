@@ -11,7 +11,6 @@ d3.json(
   "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json",
   (data) => {
     dataset = data.data;
-    console.log(dataset);
     const colPadding = 0;
     const colWidth = (width - padding * 2) / dataset.length - colPadding;
 
@@ -28,7 +27,7 @@ d3.json(
       .scaleTime()
       .domain([d3.min(years), d3.max(years)])
       .range([padding, width - padding]);
-    console.log(heightScale);
+    
 
     const title = d3
       .select(".graph")
