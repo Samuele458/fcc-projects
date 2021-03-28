@@ -1,0 +1,42 @@
+/****** Main Styling ******/
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #222;
+  text-align: center;
+  background-color: rgb(248, 31, 31);
+}
+
+.container {
+  padding: 0;
+  margin: 120px;
+  background-color: white;
+  box-shadow: 5px 5px 2px black;
+  border-radius: 15px;
+  padding: 50px;
+}
+
+a {
+  color: #2574a9;
+}
+
+input {
+  display: block;
+  position: relative;
+  margin: 10px auto;
+}
+
+input#button {
+  width: 230px;
+}
+
+.view {
+  position: relative;
+  margin: auto;
+  margin-top: 40px;
+  border: 1px solid #aaa;
+  padding: 20px;
+  width: 60%;
+  min-width: 400px;
+}
