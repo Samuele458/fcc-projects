@@ -1,7 +1,25 @@
-code {
-    background-color: whitesmoke;
+section,
+header {
+  margin: 50px;
 }
 
-section, header {
-    margin: 50px;
+body {
+  background-color: red;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h3 {
+  text-align: center !important;
+}
+
+.container {
+  background-color: white;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 2px black;
+  max-width: 700px;
+
+  margin: auto;
+  margin-top: 100px;
 }
