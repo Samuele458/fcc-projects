@@ -88,8 +88,8 @@ suite("Functional Tests", function () {
           .end((err, res) => {
             assert.equal(res.status, 200);
             assert.isArray(res.body);
+            done();
           });
-        done();
       });
     });
 
@@ -97,25 +97,24 @@ suite("Functional Tests", function () {
       test("Test GET /api/books/[id] with id not in db", function (done) {
         chai
           .request(server)
-          .get("/api/books")
-          .send({ id: "random_wrong_id" })
+          .get("/api/books/random_wrong_id")
+
           .end((err, res) => {
             assert.equal(res.status, 200);
             assert.equal(res.text, "no book exists");
+            done();
           });
-        done();
       });
-
       test("Test GET /api/books/[id] with valid id in db", function (done) {
         chai
           .request(server)
-          .get("/api/books")
-          .send({ id: valid_id })
+          .get("/api/books/" + valid_id)
+
           .end((err, res) => {
             assert.equal(res.status, 200);
             assert.property(res.body, "title");
+            done();
           });
-        done();
       });
     });
 
@@ -131,8 +130,8 @@ suite("Functional Tests", function () {
               assert.equal(res.status, 200);
               let comment = res.body.comments[res.body.comments.length - 1];
               assert.equal(comment, "random_comment");
+              done();
             });
-          done();
         });
 
         test("Test POST /api/books/[id] without comment field", function (done) {
@@ -142,9 +141,9 @@ suite("Functional Tests", function () {
 
             .end((err, res) => {
               assert.equal(res.status, 200);
-              assert.equal(res.text, "no book exists");
+              assert.equal(res.text, "missing required field comment");
+              done();
             });
-          done();
         });
 
         test("Test POST /api/books/[id] with comment, id not in db", function (done) {
@@ -154,10 +153,9 @@ suite("Functional Tests", function () {
             .send({ comment: "random_comment_2" })
             .end((err, res) => {
               assert.equal(res.status, 200);
-              let comment = res.body.comments[res.body.comments.length - 1];
-              assert.equal(comment, "no book exists");
+              assert.equal(res.text, "no book exists");
+              done();
             });
-          done();
         });
       }
     );
@@ -169,13 +167,20 @@ suite("Functional Tests", function () {
           .delete("/api/books/" + valid_id)
           .end((err, res) => {
             assert.equal(res.status, 200);
-            //assert.equal(res.text, "delete successful");
+            assert.equal(res.text, "delete successful");
+            done();
           });
-        done();
       });
 
       test("Test DELETE /api/books/[id] with  id not in db", function (done) {
-        done();
+        chai
+          .request(server)
+          .delete("/api/books/wrong_id")
+          .end((err, res) => {
+            assert.equal(res.status, 200);
+            assert.equal(res.text, "no book exists");
+            done();
+          });
       });
     });
   });
