@@ -118,5 +118,65 @@ suite("Functional Tests", function () {
         done();
       });
     });
+
+    suite(
+      "POST /api/books/[id] => add comment/expect book object with id",
+      function () {
+        test("Test POST /api/books/[id] with comment", function (done) {
+          chai
+            .request(server)
+            .post("/api/books/" + valid_id)
+            .send({ comment: "random_comment" })
+            .end((err, res) => {
+              assert.equal(res.status, 200);
+              let comment = res.body.comments[res.body.comments.length - 1];
+              assert.equal(comment, "random_comment");
+            });
+          done();
+        });
+
+        test("Test POST /api/books/[id] without comment field", function (done) {
+          chai
+            .request(server)
+            .post("/api/books/" + valid_id)
+
+            .end((err, res) => {
+              assert.equal(res.status, 200);
+              assert.equal(res.text, "no book exists");
+            });
+          done();
+        });
+
+        test("Test POST /api/books/[id] with comment, id not in db", function (done) {
+          chai
+            .request(server)
+            .post("/api/books/random_wrong_id")
+            .send({ comment: "random_comment_2" })
+            .end((err, res) => {
+              assert.equal(res.status, 200);
+              let comment = res.body.comments[res.body.comments.length - 1];
+              assert.equal(comment, "no book exists");
+            });
+          done();
+        });
+      }
+    );
+
+    suite("DELETE /api/books/[id] => delete book object id", function () {
+      test("Test DELETE /api/books/[id] with valid id in db", function (done) {
+        chai
+          .request(server)
+          .delete("/api/books/" + valid_id)
+          .end((err, res) => {
+            assert.equal(res.status, 200);
+            //assert.equal(res.text, "delete successful");
+          });
+        done();
+      });
+
+      test("Test DELETE /api/books/[id] with  id not in db", function (done) {
+        done();
+      });
+    });
   });
 });
