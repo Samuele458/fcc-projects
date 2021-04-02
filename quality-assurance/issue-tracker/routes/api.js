@@ -12,8 +12,8 @@ const issueSchema = new Schema({
   assigned_to: { type: String, default: "" },
   status_text: { type: String, default: "" },
   created_by: { type: String, required: true },
-  created_on: { type: String, default: "" },
-  updated_on: { type: String, default: "" },
+  created_on: { type: Date, default: "" },
+  updated_on: { type: Date, default: "" },
 });
 
 const Issue = mongoose.model("issue", issueSchema);
@@ -30,7 +30,7 @@ module.exports = function (app) {
       };
 
       let fields = Object.keys(issueSchema.obj);
-
+      fields.push("_id");
       fields.forEach((e) => {
         if (req.query[e]) filters[e] = req.query[e];
       });
@@ -41,8 +41,8 @@ module.exports = function (app) {
           __v: 0,
         })
         .exec((err, data) => {
-          if (err) return console.log(data);
-          res.send(data);
+          if (err) return console.log(err);
+          return res.json(data);
         });
     })
 
@@ -88,25 +88,45 @@ module.exports = function (app) {
         });
       }
 
-      let updateObj = req.body;
+      let updateObj = JSON.parse(JSON.stringify(req.body));
+      delete updateObj._id;
       updateObj.updated_on = new Date().toISOString();
-
-      Issue.findByIdAndUpdate(req.body._id, updateObj, (err, data) => {
-        if (err || data == null)
-          return res.json({ error: "could not update", _id: req.body._id });
-        res.json({ result: "successfully updated", _id: req.body._id });
-      });
+      Issue.findOneAndUpdate(
+        {
+          _id: req.body._id,
+          project: project,
+        },
+        updateObj,
+        { useFindAndModify: false },
+        (err, data) => {
+          if (data == null || err)
+            return res.json({ error: "could not update", _id: req.body._id });
+          return res.json({
+            result: "successfully updated",
+            _id: req.body._id,
+          });
+        }
+      );
     })
 
     .delete(function (req, res) {
       let project = req.params.project;
+
       if (typeof req.body._id === "undefined") {
         return res.send({ error: "missing _id" });
       }
-      Issue.findByIdAndRemove(req.body._id, (err, data) => {
-        if (err || data == null)
-          res.send({ error: "could not delete", _id: req.body._id });
-        else res.send({ result: "successfully deleted", _id: req.body._id });
-      });
+      Issue.findByIdAndRemove(
+        req.body._id,
+        { useFindAndModify: false },
+        (err, data) => {
+          if (err || data == null)
+            return res.send({ error: "could not delete", _id: req.body._id });
+          else
+            return res.send({
+              result: "successfully deleted",
+              _id: req.body._id,
+            });
+        }
+      );
     });
 };

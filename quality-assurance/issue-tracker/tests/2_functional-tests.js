@@ -75,7 +75,7 @@ suite("Functional Tests", function () {
       .get("/api/issues/test_project")
       .end((err, res) => {
         assert.equal(res.status, 200);
-        assert.equal(res.body[0].issue_title, "title");
+        assert.equal(res.body[0].status_text, "status");
 
         done();
       });
