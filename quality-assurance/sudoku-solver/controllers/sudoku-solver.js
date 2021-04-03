@@ -90,7 +90,6 @@ class SudokuSolver {
   }
 
   setNumber(puzzleString, index, replacement) {
-    //console.log("index:", index);
     return (
       puzzleString.substr(0, index) +
       replacement +
@@ -127,7 +126,6 @@ class SudokuSolver {
           });
         });
       }
-      console.log(puzzle);
     } while (puzzle != startPuzzle && puzzle.indexOf(".") != -1);
 
     if (puzzle.indexOf(".") != -1) return undefined;

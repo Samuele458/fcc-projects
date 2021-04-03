@@ -26,14 +26,11 @@ module.exports = function (app) {
       return res.json({ error: "Invalid value" });
     }
 
-    console.log(req.body.coordinate);
-
     if (
       req.body.coordinate.length != 2 ||
       !isNaN(req.body.coordinate[0]) ||
       isNaN(req.body.coordinate[1])
     ) {
-      console.log("Non valida");
       return res.json({ error: "Invalid coordinate" });
     }
 
@@ -50,6 +47,9 @@ module.exports = function (app) {
       }
     }
 
+    if (puzzle[(col - 1) * 9 + row - 1] == value) {
+      puzzle = solver.setNumber(puzzle, (col - 1) * 9 + row - 1, ".");
+    }
     checks = checks.map((checkFun) => {
       return checkFun(puzzle, row, col, value);
     });
