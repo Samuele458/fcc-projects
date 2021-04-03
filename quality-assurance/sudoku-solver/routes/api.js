@@ -77,7 +77,6 @@ module.exports = function (app) {
 
   app.route("/api/solve").post((req, res) => {
     let puzzle = req.body.puzzle;
-    console.log(req.body.puzzle);
     if (typeof req.body.puzzle === "undefined") {
       return res.json({ error: "Required field missing" });
     }

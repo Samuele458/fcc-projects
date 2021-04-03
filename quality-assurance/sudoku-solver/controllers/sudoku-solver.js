@@ -100,6 +100,9 @@ class SudokuSolver {
   solve(puzzleString) {
     let puzzle = puzzleString;
     let startPuzzle;
+
+    if (!this.validate(puzzle)) return undefined;
+
     do {
       startPuzzle = puzzle;
       for (let num = 1; num <= 9; ++num) {
