@@ -14,13 +14,44 @@ module.exports = function (app) {
 
     const names = ["row", "column", "region"];
 
+    if (
+      typeof req.body.value === "undefined" ||
+      typeof req.body.coordinate === "undefined" ||
+      typeof req.body.puzzle === "undefined"
+    ) {
+      return res.json({ error: "Required field(s) missing" });
+    }
+
+    if (isNaN(req.body.value)) {
+      return res.json({ error: "Invalid value" });
+    }
+
+    console.log(req.body.coordinate);
+
+    if (
+      req.body.coordinate.length != 2 ||
+      !isNaN(req.body.coordinate[0]) ||
+      isNaN(req.body.coordinate[1])
+    ) {
+      console.log("Non valida");
+      return res.json({ error: "Invalid coordinate" });
+    }
+
+    let value = parseInt(req.body.value);
+    let row = parseInt(req.body.coordinate[1]);
+    let col = req.body.coordinate[0].charCodeAt() - 64;
+    let puzzle = req.body.puzzle;
+
+    if (!solver.validate(puzzle)) {
+      if (!/^[\.0-9]+$/.test(puzzle)) {
+        return res.json({ error: "Invalid characters in puzzle" });
+      } else if (puzzle.length != 81) {
+        return res.json({ error: "Expected puzzle to be 81 characters long" });
+      }
+    }
+
     checks = checks.map((checkFun) => {
-      return checkFun(
-        req.body.puzzle,
-        parseInt(req.body.coordinate[1]),
-        req.body.coordinate[0].charCodeAt() - 64,
-        parseInt(req.body.value)
-      );
+      return checkFun(puzzle, row, col, value);
     });
 
     let conflict = names.filter((name, i) => {
@@ -45,7 +76,25 @@ module.exports = function (app) {
   });
 
   app.route("/api/solve").post((req, res) => {
+    let puzzle = req.body.puzzle;
     console.log(req.body.puzzle);
-    res.send({ solution: solver.solve(req.body.puzzle) });
+    if (typeof req.body.puzzle === "undefined") {
+      return res.json({ error: "Required field missing" });
+    }
+
+    if (!solver.validate(puzzle)) {
+      if (!/^[\.0-9]+$/.test(puzzle)) {
+        res.json({ error: "Invalid characters in puzzle" });
+      } else if (puzzle.length != 81) {
+        res.json({ error: "Expected puzzle to be 81 characters long" });
+      }
+    } else {
+      let solution = solver.solve(req.body.puzzle);
+      if (typeof solution === "undefined") {
+        return res.json({ error: "Puzzle cannot be solved" });
+      } else {
+        res.send({ solution: solution });
+      }
+    }
   });
 };

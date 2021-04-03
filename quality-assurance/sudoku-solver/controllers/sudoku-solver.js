@@ -127,7 +127,11 @@ class SudokuSolver {
           });
         });
       }
-    } while (puzzle != startPuzzle || puzzle.indexOf(".") != -1);
+      console.log(puzzle);
+    } while (puzzle != startPuzzle && puzzle.indexOf(".") != -1);
+
+    if (puzzle.indexOf(".") != -1) return undefined;
+
     return puzzle;
   }
 }
