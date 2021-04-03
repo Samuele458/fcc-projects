@@ -18,6 +18,8 @@ suite("Unit Tests", () => {
       "No Mr. Bond, I expect you to die.",
       "Dr. Grosh will see you now.",
       "Lunch is at 12:15 today.",
+      "Mangoes are my favorite fruit.",
+      "I ate yogurt for breakfast.",
     ];
 
     let translations = [
@@ -26,11 +28,13 @@ suite("Unit Tests", () => {
       'We had a party at my friend\'s <span class="highlight">flat</span>.',
       'Can you toss this in the <span class="highlight">bin</span> for me?',
       'The <span class="highlight">car park</span> was full.',
-      'Like a hightech <span class="highlight">Heath Robinson device</span>.',
+      'Like a high tech <span class="highlight">Heath Robinson device</span>.',
       'To <span class="highlight">bunk off</span> means to skip class or work.',
       'No <span class="highlight">Mr</span> Bond, I expect you to die.',
       '<span class="highlight">Dr</span> Grosh will see you now.',
       'Lunch is at <span class="highlight">12.15</span> today.',
+      'Mangoes are my <span class="highlight">favourite</span> fruit.',
+      'I ate <span class="highlight">yoghurt</span> for breakfast.',
     ];
 
     texts.forEach((text, i) => {
@@ -41,7 +45,7 @@ suite("Unit Tests", () => {
     });
   });
 
-  suite("Translations to British English", () => {
+  suite("Translations to American English", () => {
     let texts = [
       "We watched the footie match for a while.",
       "Paracetamol takes up to an hour to work.",
@@ -53,6 +57,8 @@ suite("Unit Tests", () => {
       "Have you met Mrs Kalyani?",
       "Prof Joyner of King's College, London.",
       "Tea time is usually around 4 or 4.30.",
+      "We watched the footie match for a while.",
+      "Paracetamol takes up to an hour to work.",
     ];
 
     let translations = [
@@ -64,8 +70,10 @@ suite("Unit Tests", () => {
       'I\'ve just got <span class="highlight">odds and ends</span> in my <span class="highlight">fanny pack</span>.',
       'The <span class="highlight">swap meet</span> at Boxted Airfield was called off.',
       'Have you met <span class="highlight">Mrs.</span> Kalyani?',
-      "Prof Joyner of King's College, London.",
+      '<span class="highlight">Prof.</span> Joyner of King\'s College, London.',
       'Tea time is usually around 4 or <span class="highlight">4:30</span>.',
+      'We watched the <span class="highlight">soccer</span> match for a while.',
+      '<span class="highlight">Tylenol</span> takes up to an hour to work.',
     ];
 
     texts.forEach((text, i) => {

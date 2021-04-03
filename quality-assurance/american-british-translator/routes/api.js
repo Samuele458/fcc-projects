@@ -9,7 +9,7 @@ module.exports = function (app) {
   app.route("/api/translate").post((req, res) => {
     const { text, locale } = req.body;
 
-    if (typeof text === "undefined" || typeof locale === undefined) {
+    if (typeof text === "undefined" || typeof locale === "undefined") {
       return res.json({ error: "Required field(s) missing" });
     }
 
@@ -20,8 +20,6 @@ module.exports = function (app) {
     if (locale !== "british-to-american" && locale !== "american-to-british") {
       return res.json({ error: "Invalid value for locale field" });
     }
-
-    console.log("Text: ", text, "->", translator.translate(text, locale));
 
     res.json({ text: text, translation: translator.translate(text, locale) });
   });

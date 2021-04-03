@@ -23,13 +23,13 @@ class Translator {
   getDictionaries(locale) {
     let dictionaries = [];
     if (locale === TO_BRITISH) {
+      dictionaries.push(americanOnly);
       dictionaries.push(americanToBritishSpelling);
       dictionaries.push(americanToBritishTitles);
-      dictionaries.push(americanOnly);
     } else if (locale === TO_AMERICAN) {
+      dictionaries.push(britishOnly);
       dictionaries.push(this.swap(americanToBritishSpelling));
       dictionaries.push(this.swap(americanToBritishTitles));
-      dictionaries.push(britishOnly);
     }
     return dictionaries;
   }
@@ -50,10 +50,33 @@ class Translator {
 
   translate(text, locale) {
     let tokens = [];
-    let translation = "";
+    let translation = text;
     let dictionaries = this.getDictionaries(locale);
     let timeRegex = this.getTimeRegex(locale);
 
+    dictionaries.forEach((dict, i) => {
+      Object.keys(dict).forEach((word) => {
+        if (i == 2) {
+          translation = translation.replace(
+            new RegExp(word + "(?=[\\.\\!\\?\\,\\:\\'\\s])", "ig"),
+            this.highlight(dict[word][0].toUpperCase() + dict[word].slice(1))
+          );
+        } else
+          translation = translation.replace(
+            new RegExp(word + "(?=[\\.\\!\\?\\,\\:\\'\\s])", "ig"),
+            this.highlight(dict[word])
+          );
+      });
+    });
+
+    translation = translation.replace(/\d{1,2}(\.|\:)\d{1,2}/gi, (time) => {
+      return this.highlight(
+        time.split(/\.|\:/)[0] +
+          this.getTimeSeparatorTo(locale) +
+          time.split(/\.|\:/)[1]
+      );
+    });
+    /*
     tokens = text.split(/\s|(?=\.\s|\.$|\,)/);
 
     tokens.forEach((token, i) => {
@@ -84,6 +107,7 @@ class Translator {
         this.highlight(repStr[0].toUpperCase() + repStr.slice(1))
       );
     });
+    */
 
     if (translation === text) return "Everything looks good to me!";
     return translation;
