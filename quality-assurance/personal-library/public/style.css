@@ -4,16 +4,58 @@
   margin: 10px;
 }
 
+body {
+  text-align: center;
+  background-color: rgb(27, 31, 37);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+  color: white;
+}
+
 #sampleui {
   max-width: 450px;
-  margin-left: 5%;
+  margin: auto;
   height: 100%;
 }
 
-#sampleposting {
-  max-width: 450px;
-  text-align: center;
-  margin-left: 5%;
+#display {
+  color: white;
+}
+
+#deleteAllBooks {
+  padding: 5px;
+}
+
+#newBookForm {
+  border-radius: 5px;
+  background-color: rgb(230, 230, 230);
+  box-shadow: 5px 5px 2px black;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#newBookForm > * {
+  padding: 5px;
+  margin: 5px;
+}
+
+#detailComments {
+  padding-left: 20px;
+}
+
+#bookDetail {
+  border-radius: 5px;
+  background-color: rgb(230, 230, 230);
+  box-shadow: 5px 5px 2px black;
+}
+
+#bookTitleToAdd {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #userstories {

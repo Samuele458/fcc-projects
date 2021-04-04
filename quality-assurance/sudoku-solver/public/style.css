@@ -3,11 +3,12 @@ code {
 }
 
 body {
-  background-color: rgb(251, 255, 0);
+  background-color: rgb(249, 111, 9);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h1 {
+  color: white;
   text-align: center;
 }
 
@@ -28,7 +29,7 @@ h1 {
 }
 
 .form-container > * {
-  background-color: red;
+  background-color: #f8f8f8;
 }
 
 textarea {
@@ -72,7 +73,7 @@ textarea {
 }
 
 #error-msg {
-  color: red;
+  color: #f8f8f8;
   display: inline;
   margin-left: 10px;
 }
