@@ -11,7 +11,7 @@ const stockSchema = new Schema({
 const Stock = mongoose.model("stock", stockSchema);
 
 module.exports = function (app) {
-  function getStock(name, callback) {
+  async function getStock(name) {
     const options = {
       hostname: "stock-price-checker-proxy.freecodecamp.rocks",
       port: 443,
@@ -36,6 +36,7 @@ module.exports = function (app) {
   }
 
   app.route("/api/stock-prices").get(function (req, res) {
+    /*
     const { stock, like } = req.query;
 
     if (typeof stock === "undefined") {
@@ -71,11 +72,36 @@ module.exports = function (app) {
             });
           });
         } else {
-          res.json({ ehehe: 3 });
+          if (typeof like !== "undefined") {
+            Stock.findOneAndUpdate(
+              { name: stock },
+              { likes: req.connection.remoteAddress },
+              { new: true },
+              (err, newStockData) => {
+                if (err) return console.log(err);
+
+                res.json({
+                  stockdata: {
+                    stock: stockData.symbol,
+                    price: stockData.latestPrice,
+                    like: newStockData.likes.length,
+                  },
+                });
+              }
+            );
+          } else {
+            res.json({
+              stockdata: {
+                stock: stockData.symbol,
+                price: stockData.latestPrice,
+                like: currentStockData.likes.length,
+              },
+            });
+          }
         }
       });
     });
-
+*/
     console.log(req.query);
   });
 };
