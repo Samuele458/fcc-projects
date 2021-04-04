@@ -2,21 +2,63 @@ code {
   background: #d0d0d5;
 }
 
+body {
+  background-color: rgb(10, 74, 248);
+}
+
+main {
+  background-color: white;
+  border-radius: 15px;
+  padding: 40px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 }
 
-.form-container {
-  max-width: 95%;
+.form-container,
+#output-container {
+  border: 2px solid black;
+  margin: auto;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
 }
 
 textarea {
   width: 100%;
+  resize: none;
+  margin: auto;
+  display: block;
+  box-sizing: border-box;
+}
+
+#tool-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
 }
 
 #user-stories {
   font-size: 1.2em;
+}
+
+#locale-select {
+  margin: 10px;
+  width: 100%;
+}
+
+#translate-btn {
+  margin: auto;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  background-color: rgb(14, 14, 206);
 }
 
 #output-container,
@@ -28,13 +70,18 @@ input[type="button"] {
 }
 
 #output-container {
-  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #solution-container {
   font-weight: bold;
+  width: 100%;
 }
 
 #solution-container {
@@ -42,8 +89,10 @@ input[type="button"] {
 }
 
 #translated-sentence {
+  margin: auto;
   margin-top: 10px;
   font-weight: normal;
+  width: 90%;
 }
 
 #error-msg {
@@ -61,7 +110,9 @@ input[type="button"] {
 
 @media (min-width: 800px) {
   .container {
+    flex: 1;
     flex-direction: row;
+    align-items: stretch;
   }
 
   .form-container {
@@ -70,12 +121,11 @@ input[type="button"] {
 
   #output-container {
     flex-direction: row;
-    margin-top: 0;
+    margin-top: 0px;
     margin-left: 20px;
   }
 
   #solution-container {
-    width: 75%;
     margin-top: 0;
   }
 }
