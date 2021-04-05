@@ -9,13 +9,22 @@ const fccTestingRoutes = require("./routes/fcctesting.js");
 const runner = require("./test-runner");
 
 const mongoose = require("mongoose");
-
+const helmet = require("helmet");
 const app = express();
 
 mongoose.connect(process.env.DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      styleSrc: ["'self'"],
+      scriptSrc: ["'self'"],
+    },
+  })
+);
 
 app.use("/public", express.static(process.cwd() + "/public"));
 
