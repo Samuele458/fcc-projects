@@ -1,0 +1,62 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background: repeating-linear-gradient(
+    45deg,
+    rgb(52, 235, 174) 0px,
+    rgb(52, 235, 174) 450px,
+    rgb(24, 214, 176) 450px,
+    rgb(24, 214, 176) 900px
+  );
+  height: 100%;
+
+  font-family: Roboto;
+}
+
+h1 {
+  text-align: center;
+  font-family: Roboto;
+  margin: 25px;
+}
+
+.card {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  padding: 40px;
+  background-color: rgb(232, 232, 232);
+  box-shadow: 5px 5px 2px black;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+input[type="checkbox"] {
+  display: inline-block;
+  padding: 10px;
+}
+
+input[type="text"] {
+  padding: 6px;
+  border-radius: 3px;
+}
+
+label {
+  margin: 15px;
+  margin-left: 30px;
+}
+
+button {
+  align-self: center;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+#single-stock,
+#multi-stock {
+  /*visibility: hidden;*/
+}

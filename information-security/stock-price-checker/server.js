@@ -20,8 +20,10 @@ mongoose.connect(process.env.DB, {
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      styleSrc: ["'self'"],
-      scriptSrc: ["'self'"],
+      defaultSrc: ["'self'"],
+      "style-src": ["'self'", "fonts.gstatic.com", "fonts.googleapis.com"],
+      scriptSrc: ["'self'", "code.jquery.com"],
+      fontSrc: ["fonts.gstatic.com", "fonts.googleapis.com"],
     },
   })
 );

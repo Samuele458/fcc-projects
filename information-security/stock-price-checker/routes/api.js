@@ -31,10 +31,6 @@ module.exports = function (app) {
           res.on("end", () => {
             let response = Buffer.concat(data).toString();
 
-            // response body
-
-            //console.log("HTTPS RESPONSE: ", response);
-
             if (response == '"Invalid symbol"') resolve({});
             else {
               let dataObj = JSON.parse(response);
@@ -44,8 +40,6 @@ module.exports = function (app) {
           });
         }
       );
-
-      //stockReq.end();
     });
   }
 
@@ -59,7 +53,6 @@ module.exports = function (app) {
 
   app.route("/api/stock-prices").get(function (req, res) {
     (async function () {
-      console.log("Request:", req.query);
       let { stock, like } = req.query;
 
       if (typeof stock === "undefined") {
@@ -89,7 +82,6 @@ module.exports = function (app) {
 
             newStock.save((err, newStockData) => {
               if (err) return console.log(err);
-              //stockData[0].likes = newStockData.likes.length;
             });
           } else {
             let likes = stocksFound[i].likes;
@@ -106,8 +98,6 @@ module.exports = function (app) {
                 }
               );
             } else stockData[i].likes = stocksFound[i].likes.length;
-
-            console.log(stocksFound[i]);
           }
         }
 
@@ -116,25 +106,15 @@ module.exports = function (app) {
         delete stockData[0].likes;
         delete stockData[1].likes;
         res.json({ stockData: stockData });
-
-        //for( let i = 0; i < )
-
-        //console.log(stocksFound);
       } else {
         stock = stock.toUpperCase();
 
         let stockData = await getStock(stock);
 
-        console.log("Fetched data:", stockData);
-
-        //recupera i due stock
-        //per ogni stock cercalo in mongodb
-
         Stock.findOne({ name: stock }, (err, stockFound) => {
           if (err) return console.log(err);
 
           if (stockFound != null) {
-            console.log("Stock found");
             if (
               like &&
               stockFound.likes.indexOf(req.connection.remoteAddress) == -1
@@ -159,7 +139,6 @@ module.exports = function (app) {
               });
             }
           } else {
-            console.log("Stock not found");
             const newStock = new Stock({
               name: stock,
               likes: like ? [req.connection.remoteAddress] : [],
@@ -177,63 +156,5 @@ module.exports = function (app) {
         });
       }
     })();
-
-    /*
-
-    getStock(stock, (stockData) => {
-      //console.log(stockData);
-
-      Stock.findOne({ name: stock }, (err, currentStockData) => {
-        if (err) return console.log(err);
-
-        console.log(currentStockData);
-        if (currentStockData == null) {
-          const newStock = new Stock({
-            name: stock,
-            likes:
-              typeof like === "undefined" ? [] : [req.connection.remoteAddress],
-          });
-
-          newStock.save((err, newStockData) => {
-            if (err) return console.log(err);
-            console.log(req.connection.remoteAddress);
-            res.json({
-              stockdata: {
-                stock: stockData.symbol,
-                price: stockData.latestPrice,
-                like: newStockData.likes.length,
-              },
-            });
-          });
-        } else {
-          if (typeof like !== "undefined") {
-            Stock.findOneAndUpdate(
-              { name: stock },
-              { likes: req.connection.remoteAddress },
-              { new: true },
-              (err, newStockData) => {
-                if (err) return console.log(err);
-
-                res.json({
-                  stockdata: {
-                    stock: stockData.symbol,
-                    price: stockData.latestPrice,
-                    like: newStockData.likes.length,
-                  },
-                });
-              }
-            );
-          } else {
-            res.json({
-              stockdata: {
-                stock: stockData.symbol,
-                price: stockData.latestPrice,
-                like: currentStockData.likes.length,
-              },
-            });
-          }
-        }
-      });
-    });*/
   });
 };
