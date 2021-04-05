@@ -11,40 +11,77 @@ const stockSchema = new Schema({
 const Stock = mongoose.model("stock", stockSchema);
 
 module.exports = function (app) {
-  async function getStock(name) {
-    const options = {
-      hostname: "stock-price-checker-proxy.freecodecamp.rocks",
-      port: 443,
-      path: "/v1/stock/" + name + "/quote",
-      method: "GET",
-    };
+  function stockPromise(name) {
+    return new Promise((resolve, reject) => {
+      const options = {
+        hostname: "stock-price-checker-proxy.freecodecamp.rocks",
+        port: 443,
+        path: "/v1/stock/" + name + "/quote",
+        method: "GET",
+      };
 
-    const stockReq = https.request(options, (res) => {
-      console.log(`statusCode: ${res.statusCode}`);
+      let data;
 
-      res.on("data", (d) => {
-        //console.log(JSON.parse(d));
-        callback(JSON.parse(d));
+      const stockReq = https.request(options, (res) => {
+        console.log(`statusCode: ${res.statusCode}`);
+
+        res.on("data", (d) => {
+          //console.log(JSON.parse(d));
+          data = typeof d === "undefined" ? d : JSON.parse(d);
+        });
       });
-    });
 
-    stockReq.on("error", (error) => {
-      console.error(error);
-    });
+      stockReq.on("error", (error) => {
+        reject(error);
+      });
 
-    stockReq.end();
+      console.log("here");
+
+      stockReq.end();
+
+      resolve(data);
+    });
+  }
+
+  async function getStock(name) {
+    try {
+      return await stockPromise(name);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   app.route("/api/stock-prices").get(function (req, res) {
+    (async function () {
+      const { stock, like } = req.query;
+
+      if (typeof stock === "undefined") {
+        return res.json({ error: "missing stock field" });
+      }
+
+      if (typeof like === "undefined") {
+        like = false;
+      }
+
+      //cerco lo stock in mongodb
+      // se non lo trovo lo creo
+      // se lo trovo lo modifico
+
+      Stock.findOne({ name: stock }, (err, stockFound) => {
+        if (err) return console.log(err);
+
+        if (stockFound != null) {
+          console.log("trovato");
+        } else {
+          console.log("non trovato");
+        }
+      });
+
+      res.send("sds");
+      console.log("Query:", req.query);
+    })();
+
     /*
-    const { stock, like } = req.query;
-
-    if (typeof stock === "undefined") {
-      return res.json({ error: "missing stock field" });
-    }
-
-    if (typeof like === "undefined") {
-    }
 
     getStock(stock, (stockData) => {
       //console.log(stockData);
@@ -100,8 +137,6 @@ module.exports = function (app) {
           }
         }
       });
-    });
-*/
-    console.log(req.query);
+    });*/
   });
 };
