@@ -10,7 +10,13 @@ const runner = require("./test-runner");
 
 const mongoose = require("mongoose");
 
+const helmet = require("helmet");
+
 const app = express();
+
+app.use(helmet.frameguard({ action: "SAMEORIGIN" }));
+app.use(helmet.dnsPrefetchControl());
+app.use(helmet.referrerPolicy({ policy: "same-origin" }));
 
 mongoose.connect(process.env.DB, {
   useNewUrlParser: true,
