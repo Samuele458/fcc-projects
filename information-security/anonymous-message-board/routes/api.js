@@ -49,9 +49,6 @@ module.exports = function (app) {
     })
 
     .get((req, res) => {
-      console.log("Data query:", req.query);
-      console.log("Data body:", req.body);
-      console.log("Data params:", req.params);
       Thread.find({
         board: req.params.board,
       })
@@ -85,7 +82,6 @@ module.exports = function (app) {
     })
 
     .put((req, res) => {
-      console.log("PUT: ", req.body);
       Thread.findOneAndUpdate(
         {
           _id: req.body.report_id,
@@ -104,8 +100,6 @@ module.exports = function (app) {
     })
 
     .delete((req, res) => {
-      console.log("DELETE: ", req.body);
-
       Thread.findOneAndDelete(
         {
           _id: req.body.thread_id,
@@ -163,8 +157,6 @@ module.exports = function (app) {
       });
     })
     .get((req, res) => {
-      console.log("GET: ", req.query);
-
       Thread.findOne({
         _id: mongoose.Types.ObjectId(req.query.thread_id),
       })
@@ -187,8 +179,6 @@ module.exports = function (app) {
         });
     })
     .put((req, res) => {
-      console.log("PUT: ", req.body);
-
       Reply.findOneAndUpdate(
         {
           _id: req.body.reply_id,
@@ -206,7 +196,6 @@ module.exports = function (app) {
       );
     })
     .delete((req, res) => {
-      console.log("DELETE: ", req.body);
       Reply.findOneAndDelete(
         {
           _id: req.body.reply_id,
